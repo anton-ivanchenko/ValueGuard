@@ -53,4 +53,10 @@ public static class Guard
 
         return new GuardValue<T>(parameterName, value);
     }
+
+    public static GuardValue<T> Value<T>(T value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
+    {
+        parameterName ??= nameof(value);
+        return new GuardValue<T>(parameterName, value);
+    }
 }

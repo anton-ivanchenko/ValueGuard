@@ -39,4 +39,12 @@ public sealed class GuardTests
     [Fact]
     public void NotNull_ReferenceType_NotNullValue_NoException()
         => Guard.NotNull(new object());
+
+    [Fact]
+    public void Value_ValueType_NoException()
+        => Guard.Value(0);
+
+    [Fact]
+    public void Value_ReferenceType_NoException()
+        => Guard.Value(new object());
 }
