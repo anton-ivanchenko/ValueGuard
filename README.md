@@ -3,8 +3,8 @@
 Work in progress...
 
 Primitive types:  
-- [ ] bool
-- [ ] char
+- [x] bool
+- [x] char
 - [ ] sbyte
 - [ ] byte
 - [ ] short
