@@ -2,7 +2,7 @@ using ValueGuard.Exceptions;
 
 namespace ValueGuard.Tests;
 
-public sealed class GuardValueExtensionsTestsString
+public sealed class GuardValueExtensionsStringTests
 {
     [Fact]
     public void Empty_EmptyString_NoException()
