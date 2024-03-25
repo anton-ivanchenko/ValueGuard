@@ -9,7 +9,7 @@ Primitive types:
 - [ ] byte
 - [ ] short
 - [ ] ushort
-- [ ] int
+- [x] int
 - [ ] uint
 - [ ] long
 - [ ] ulong
