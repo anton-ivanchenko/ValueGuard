@@ -2,7 +2,7 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<string> Empty(this in GuardValue<string> guard)
+    public static ref readonly GuardValue<string> IsEmpty(this in GuardValue<string> guard)
     {
         if (guard.Value.Length > 0)
         {
@@ -12,7 +12,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> NotEmpty(this in GuardValue<string> guard)
+    public static ref readonly GuardValue<string> IsNotEmpty(this in GuardValue<string> guard)
     {
         if (string.IsNullOrEmpty(guard.Value))
         {
@@ -22,7 +22,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> NotWhiteSpace(this in GuardValue<string> guard)
+    public static ref readonly GuardValue<string> IsNotWhiteSpace(this in GuardValue<string> guard)
     {
         if (string.IsNullOrWhiteSpace(guard.Value))
         {

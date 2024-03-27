@@ -12,7 +12,7 @@ public readonly struct GuardValue<T>
     }
 
     public string ParameterName { get; }
-    
+
     public T Value { get; }
 
     [DoesNotReturn]

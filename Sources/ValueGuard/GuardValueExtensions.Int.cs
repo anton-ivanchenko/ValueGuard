@@ -17,16 +17,16 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<int> IsNegative(this in GuardValue<int> guard)
         => ref guard.IsLess<int, IntConditions>(default);
 
-    public static ref readonly GuardValue<int> Greater(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardValue<int> IsGreater(this in GuardValue<int> guard, int value)
         => ref guard.IsGreater<int, IntConditions>(value);
 
-    public static ref readonly GuardValue<int> GreaterOrEqual(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardValue<int> IsGreaterOrEqual(this in GuardValue<int> guard, int value)
         => ref guard.IsGreaterOrEqual<int, IntConditions>(value);
 
-    public static ref readonly GuardValue<int> Less(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardValue<int> IsLess(this in GuardValue<int> guard, int value)
         => ref guard.IsLess<int, IntConditions>(value);
 
-    public static ref readonly GuardValue<int> LessOrEqual(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardValue<int> IsLessOrEqual(this in GuardValue<int> guard, int value)
         => ref guard.IsLessOrEqual<int, IntConditions>(value);
 
     public static ref readonly GuardValue<int> InRange(this in GuardValue<int> guard, int min, int max, bool excludeMin = false, bool excludeMax = false)

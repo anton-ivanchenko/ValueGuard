@@ -5,39 +5,39 @@ namespace ValueGuard.Tests;
 public sealed class GuardValueExtensionsStringTests
 {
     [Fact]
-    public void Empty_EmptyString_NoException()
-        => Guard.NotNull(string.Empty).Empty();
+    public void IsEmpty_EmptyString_NoException()
+        => Guard.NotNull(string.Empty).IsEmpty();
 
     [Fact]
-    public void Empty_NotEmptyString_ThrowException()
+    public void IsEmpty_NotEmptyString_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.NotNull("Hello world").Empty());
+            => Guard.NotNull("Hello world").IsEmpty());
 
     [Fact]
-    public void NotEmpty_NotEmptyString_NoException()
-        => Guard.NotNull("Hello world").NotEmpty();
+    public void IsNotEmpty_NotEmptyString_NoException()
+        => Guard.NotNull("Hello world").IsNotEmpty();
 
     [Fact]
-    public void NotEmpty_EmptyString_ThrowException()
+    public void IsNotEmpty_EmptyString_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.NotNull(string.Empty).NotEmpty());
+            => Guard.NotNull(string.Empty).IsNotEmpty());
 
     [Fact]
-    public void NotWhiteSpace_NotEmptyString_NoException()
-        => Guard.NotNull(" Hello world ").NotWhiteSpace();
+    public void IsNotWhiteSpace_NotEmptyString_NoException()
+        => Guard.NotNull(" Hello world ").IsNotWhiteSpace();
 
     [Fact]
-    public void NotWhiteSpace_EmptyString_ThrowException()
+    public void IsNotWhiteSpace_EmptyString_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.NotNull(string.Empty).NotWhiteSpace());
+            => Guard.NotNull(string.Empty).IsNotWhiteSpace());
 
     [Fact]
-    public void NotWhiteSpace_SpaceString_ThrowException()
+    public void IsNotWhiteSpace_SpaceString_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.NotNull(" ").NotWhiteSpace());
+            => Guard.NotNull(" ").IsNotWhiteSpace());
 
     [Fact]
-    public void NotWhiteSpace_TabString_ThrowException()
+    public void IsNotWhiteSpace_TabString_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.NotNull("\t").NotWhiteSpace());
+            => Guard.NotNull("\t").IsNotWhiteSpace());
 }

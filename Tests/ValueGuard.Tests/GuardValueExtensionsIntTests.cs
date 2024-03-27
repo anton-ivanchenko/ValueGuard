@@ -50,51 +50,51 @@ public class GuardValueExtensionsIntTests
 
     [Theory]
     [InlineData(5, 0)]
-    public void Greater_GreaterThanValue_NoException(int number, int comparableValue)
-        => Guard.Value(number).Greater(comparableValue);
+    public void IsGreater_GreaterThanValue_NoException(int number, int comparableValue)
+        => Guard.Value(number).IsGreater(comparableValue);
 
     [Theory]
     [InlineData(0, 5)]
     [InlineData(5, 5)]
-    public void Greater_LessOrEqualThanValue_ThrowException(int number, int comparableValue)
+    public void IsGreater_LessOrEqualThanValue_ThrowException(int number, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).Greater(comparableValue));
+            => Guard.Value(number).IsGreater(comparableValue));
 
     [Theory]
     [InlineData(5, 0)]
     [InlineData(5, 5)]
-    public void GreaterOrEqual_GreaterOrEqualThanValue_NoException(int number, int comparableValue)
-        => Guard.Value(number).GreaterOrEqual(comparableValue);
+    public void IsGreaterOrEqual_GreaterOrEqualThanValue_NoException(int number, int comparableValue)
+        => Guard.Value(number).IsGreaterOrEqual(comparableValue);
 
     [Theory]
     [InlineData(0, 5)]
-    public void GreaterOrEqual_LessThanValue_ThrowException(int number, int comparableValue)
+    public void IsGreaterOrEqual_LessThanValue_ThrowException(int number, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).GreaterOrEqual(comparableValue));
+            => Guard.Value(number).IsGreaterOrEqual(comparableValue));
 
     [Theory]
     [InlineData(0, 5)]
-    public void Less_LessThanValue_NoException(int number, int comparableValue)
-        => Guard.Value(number).Less(comparableValue);
+    public void IsLess_LessThanValue_NoException(int number, int comparableValue)
+        => Guard.Value(number).IsLess(comparableValue);
 
     [Theory]
     [InlineData(5, 0)]
     [InlineData(5, 5)]
-    public void Less_GreaterOrEqualThanValue_ThrowException(int number, int comparableValue)
+    public void IsLess_GreaterOrEqualThanValue_ThrowException(int number, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).Less(comparableValue));
+            => Guard.Value(number).IsLess(comparableValue));
 
     [Theory]
     [InlineData(2, 5)]
     [InlineData(5, 5)]
-    public void LessOrEqual_LessOrEqualThanNumber_NoException(int number, int comparableValue)
-        => Guard.Value(number).LessOrEqual(comparableValue);
+    public void IsLessOrEqual_LessOrEqualThanNumber_NoException(int number, int comparableValue)
+        => Guard.Value(number).IsLessOrEqual(comparableValue);
 
     [Theory]
     [InlineData(8, 5)]
-    public void LessOrEqual_GreaterThanNumber_ThrowException(int number, int comparableValue)
+    public void IsLessOrEqual_GreaterThanNumber_ThrowException(int number, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).LessOrEqual(comparableValue));
+            => Guard.Value(number).IsLessOrEqual(comparableValue));
 
     [Theory]
     [InlineData(0, 0, 10, false, false)]
