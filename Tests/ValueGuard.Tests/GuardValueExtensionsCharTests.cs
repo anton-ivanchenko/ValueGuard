@@ -2,7 +2,7 @@ using ValueGuard.Exceptions;
 
 namespace ValueGuard.Tests;
 
-public class GuardValueExtensionsCharTests
+public sealed class GuardValueExtensionsCharTests
 {
     [Theory]
     [InlineData('a', 'a')]

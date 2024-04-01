@@ -2,7 +2,7 @@ using ValueGuard.Exceptions;
 
 namespace ValueGuard.Tests;
 
-public class GuardValueExtensionsBoolTests
+public sealed class GuardValueExtensionsBoolTests
 {
     [Theory]
     [InlineData(true, true)]

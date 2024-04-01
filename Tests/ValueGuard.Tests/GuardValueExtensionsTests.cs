@@ -1,6 +1,6 @@
 namespace ValueGuard.Tests;
 
-public class GuardValueExtensionsTests
+public sealed class GuardValueExtensionsTests
 {
     [Fact]
     public void GetValue_ReturnOriginalValue()

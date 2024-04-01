@@ -2,7 +2,7 @@ using ValueGuard.Exceptions;
 
 namespace ValueGuard.Tests;
 
-public class GuardValueExtensionsIntTests
+public sealed class GuardValueExtensionsIntTests
 {
     [Theory]
     [InlineData(10, 10)]
