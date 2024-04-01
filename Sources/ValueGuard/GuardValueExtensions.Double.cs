@@ -14,10 +14,10 @@ public static partial class GuardValueExtensions
         return ref guard.IsEqual<double, DoubleConditions>(value, tolerance);
     }
 
-    public static ref readonly GuardValue<double> IsZero(this in GuardValue<double> guard)
+    public static ref readonly GuardValue<double> IsDefault(this in GuardValue<double> guard)
         => ref guard.IsDefault<double, DoubleConditions>();
 
-    public static ref readonly GuardValue<double> IsNotZero(this in GuardValue<double> guard)
+    public static ref readonly GuardValue<double> IsNotDefault(this in GuardValue<double> guard)
         => ref guard.IsNotDefault<double, DoubleConditions>();
 
     public static ref readonly GuardValue<double> IsPositive(this in GuardValue<double> guard)

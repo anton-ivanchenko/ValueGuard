@@ -8,10 +8,10 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<int> IsEqual(this in GuardValue<int> guard, int value)
         => ref guard.IsEqual<int, IntConditions>(value);
 
-    public static ref readonly GuardValue<int> IsZero(this in GuardValue<int> guard)
+    public static ref readonly GuardValue<int> IsDefault(this in GuardValue<int> guard)
         => ref guard.IsDefault<int, IntConditions>();
 
-    public static ref readonly GuardValue<int> IsNotZero(this in GuardValue<int> guard)
+    public static ref readonly GuardValue<int> IsNotDefault(this in GuardValue<int> guard)
         => ref guard.IsNotDefault<int, IntConditions>();
 
     public static ref readonly GuardValue<int> IsPositive(this in GuardValue<int> guard)

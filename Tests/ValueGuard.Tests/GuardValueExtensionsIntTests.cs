@@ -14,26 +14,26 @@ public sealed class GuardValueExtensionsIntTests
             => Guard.Value(value).IsEqual(expected));
 
     [Fact]
-    public void IsZero_Zero_NoException()
-        => Guard.Value(0).IsZero();
+    public void IsDefault_Zero_NoException()
+        => Guard.Value(0).IsDefault();
 
     [Theory]
     [InlineData(-1)]
     [InlineData(1)]
-    public void IsZero_NoZero_ThrowException(int number)
+    public void IsDefault_NoZero_ThrowException(int number)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsZero());
+            => Guard.Value(number).IsDefault());
 
     [Theory]
     [InlineData(-1)]
     [InlineData(1)]
-    public void IsNotZero_NotZero_NoException(int number)
-        => Guard.Value(number).IsNotZero();
+    public void IsNotDefault_NotZero_NoException(int number)
+        => Guard.Value(number).IsNotDefault();
 
     [Fact]
-    public void IsNotZero_Zero_ThrowException()
+    public void IsNotDefault_Zero_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value(0).IsNotZero());
+            => Guard.Value(0).IsNotDefault());
 
     [Fact]
     public void IsPositive_Positive_NoException()

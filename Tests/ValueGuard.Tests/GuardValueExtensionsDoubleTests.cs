@@ -31,31 +31,31 @@ public sealed class GuardValueExtensionsDoubleTests
 
     [Theory]
     [InlineData(0)]
-    public void IsZero_Zero_NoException(double number)
-        => Guard.Value(number).IsZero();
+    public void IsDefault_Zero_NoException(double number)
+        => Guard.Value(number).IsDefault();
 
     [Theory]
     [InlineData(-0.1)]
     [InlineData(-2.0)]
     [InlineData(0.1)]
     [InlineData(2.0)]
-    public void IsZero_NoZero_ThrowException(double number)
+    public void IsDefault_NoZero_ThrowException(double number)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsZero());
+            => Guard.Value(number).IsDefault());
 
     [Theory]
     [InlineData(-0.1)]
     [InlineData(-2.0)]
     [InlineData(0.1)]
     [InlineData(2.0)]
-    public void IsNotZero_NotZero_NoException(double number)
-        => Guard.Value(number).IsNotZero();
+    public void IsNotDefault_NotZero_NoException(double number)
+        => Guard.Value(number).IsNotDefault();
 
     [Theory]
     [InlineData(0)]
-    public void IsNotZero_Zero_ThrowException(double number)
+    public void IsNotDefault_Zero_ThrowException(double number)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsNotZero());
+            => Guard.Value(number).IsNotDefault());
 
     [Theory]
     [InlineData(0.1)]
