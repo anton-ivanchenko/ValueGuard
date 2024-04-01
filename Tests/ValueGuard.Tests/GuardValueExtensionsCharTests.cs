@@ -4,6 +4,17 @@ namespace ValueGuard.Tests;
 
 public class GuardValueExtensionsCharTests
 {
+    [Theory]
+    [InlineData('a', 'a')]
+    public void IsEqual_Equals_NoException(char value, char expected)
+        => Guard.Value(value).IsEqual(expected);
+
+    [Theory]
+    [InlineData('a', 'b')]
+    public void IsEqual_NoEquals_ThrowException(char value, char expected)
+        => Assert.Throws<GuardException>(()
+            => Guard.Value(value).IsEqual(expected));
+
     [Fact]
     public void IsDigit_Digit_NoException()
         => Guard.Value('0').IsDigit();

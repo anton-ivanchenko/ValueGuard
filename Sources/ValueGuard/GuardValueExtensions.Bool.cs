@@ -1,16 +1,12 @@
+using ValueGuard.Internal;
+using ValueGuard.Internal.Conditions;
+
 namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
     public static ref readonly GuardValue<bool> IsEqual(this in GuardValue<bool> guard, bool value)
-    {
-        if (guard.Value != value)
-        {
-            guard.ThrowException($"The value must be \"{value}\"");
-        }
-
-        return ref guard;
-    }
+        => ref guard.IsEqual<bool, BoolConditions>(value);
 
     public static ref readonly GuardValue<bool> IsTrue(this in GuardValue<bool> guard)
     {

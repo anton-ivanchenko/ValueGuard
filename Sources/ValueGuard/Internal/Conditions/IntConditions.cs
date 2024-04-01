@@ -5,10 +5,14 @@ namespace ValueGuard.Internal.Conditions;
 
 internal readonly struct IntConditions
     : IHaveDefaultCondition<int>
+    , IHaveEqualCondition<int>
     , IHaveRangeCondition<int>
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsDefault(int value) => value == 0;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public bool IsEqual(int left, int right) => left == right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsGreater(int left, int right) => left > right;
