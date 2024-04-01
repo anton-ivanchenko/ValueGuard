@@ -5,6 +5,9 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
+    public static ref readonly GuardValue<int> IsEqual(this in GuardValue<int> guard, int value)
+        => ref guard.IsEqual<int, IntConditions>(value);
+
     public static ref readonly GuardValue<int> IsZero(this in GuardValue<int> guard)
         => ref guard.IsDefault<int, IntConditions>();
 
@@ -29,6 +32,7 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<int> IsLessOrEqual(this in GuardValue<int> guard, int value)
         => ref guard.IsLessOrEqual<int, IntConditions>(value);
 
-    public static ref readonly GuardValue<int> InRange(this in GuardValue<int> guard, int min, int max, bool excludeMin = false, bool excludeMax = false)
+    public static ref readonly GuardValue<int> InRange(this in GuardValue<int> guard, int min, int max, bool excludeMin = false,
+        bool excludeMax = false)
         => ref guard.InRange<int, IntConditions>(min, max, excludeMin, excludeMax);
 }

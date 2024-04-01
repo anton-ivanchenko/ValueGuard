@@ -4,6 +4,17 @@ namespace ValueGuard.Tests;
 
 public class GuardValueExtensionsIntTests
 {
+    [Theory]
+    [InlineData(10, 10)]
+    public void IsEqual_Equals_NoException(int value, int expected)
+        => Guard.Value(value).IsEqual(expected);
+
+    [Theory]
+    [InlineData(10, 20)]
+    public void IsEqual_NoEquals_ThrowException(int value, int expected)
+        => Assert.Throws<GuardException>(()
+            => Guard.Value(value).IsEqual(expected));
+
     [Fact]
     public void IsZero_Zero_NoException()
         => Guard.Value(0).IsZero();
