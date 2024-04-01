@@ -9,22 +9,8 @@ public static partial class GuardValueExtensions
         => ref guard.IsEqual<bool, BoolConditions>(value);
 
     public static ref readonly GuardValue<bool> IsTrue(this in GuardValue<bool> guard)
-    {
-        if (!guard.Value)
-        {
-            guard.ThrowException("The value must be \"true\"");
-        }
-
-        return ref guard;
-    }
+        => ref guard.IsEqual<bool, BoolConditions>(true);
 
     public static ref readonly GuardValue<bool> IsFalse(this in GuardValue<bool> guard)
-    {
-        if (guard.Value)
-        {
-            guard.ThrowException("The value must be \"false\"");
-        }
-
-        return ref guard;
-    }
+        => ref guard.IsEqual<bool, BoolConditions>(false);
 }
