@@ -1,4 +1,4 @@
-namespace ValueGuard.Exceptions;
+namespace ValueGuard;
 
 public class GuardException : Exception
 {

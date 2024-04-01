@@ -1,5 +1,3 @@
-using ValueGuard.Exceptions;
-
 namespace ValueGuard.Tests;
 
 public sealed class GuardValueExtensionsIntTests
