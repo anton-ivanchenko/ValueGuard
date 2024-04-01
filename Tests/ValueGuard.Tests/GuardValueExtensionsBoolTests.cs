@@ -4,6 +4,19 @@ namespace ValueGuard.Tests;
 
 public class GuardValueExtensionsBoolTests
 {
+    [Theory]
+    [InlineData(true, true)]
+    [InlineData(false, false)]
+    public void IsEqual_Equal_NoException(bool value, bool expected)
+        => Guard.Value(value).IsEqual(expected);
+
+    [Theory]
+    [InlineData(true, false)]
+    [InlineData(false, true)]
+    public void IsEqual_NotEqual_ThrowException(bool value, bool expected)
+        => Assert.Throws<GuardException>(()
+            => Guard.Value(value).IsEqual(expected));
+
     [Fact]
     public void IsTrue_True_NoException()
         => Guard.Value(true).IsTrue();
