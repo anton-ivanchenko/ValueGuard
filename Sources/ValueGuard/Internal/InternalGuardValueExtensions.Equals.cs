@@ -16,4 +16,15 @@ internal static partial class InternalGuardValueExtensions
 
         return ref guard;
     }
+
+    public static ref readonly GuardValue<TValue> IsEqual<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value, TValue tolerance)
+        where TCondition : struct, IHaveEqualWithPrecisionCondition<TValue>
+    {
+        if (!default(TCondition).IsEqual(guard.Value, value, tolerance))
+        {
+            guard.ThrowException($"The value must be '{value}'");
+        }
+
+        return ref guard;
+    }
 }
