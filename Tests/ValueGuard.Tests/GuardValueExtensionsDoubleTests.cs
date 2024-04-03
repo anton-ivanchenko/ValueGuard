@@ -30,6 +30,29 @@ public sealed class GuardValueExtensionsDoubleTests
             => Guard.Value(value).IsEqual(expected, tolerance));
 
     [Theory]
+    [InlineData(1e-10, 0)]
+    public void IsNotEqual_GreaterDefaultTolerance_NoException(double value, double expected)
+        => Guard.Value(value).IsNotEqual(expected);
+
+    [Theory]
+    [InlineData(1e-13, 0)]
+    public void IsNotEqual_LessDefaultTolerance_ThrowException(double value, double expected)
+        => Assert.Throws<GuardException>(()
+            => Guard.Value(value).IsNotEqual(expected));
+
+    [Theory]
+    [InlineData(0, 0.1, 0.1)]
+    [InlineData(0, 0.2, 0.1)]
+    public void IsNotEqual_GreaterSpecificTolerance_NoException(double value, double expected, double tolerance)
+        => Guard.Value(value).IsNotEqual(expected, tolerance);
+
+    [Theory]
+    [InlineData(0, 0.01, 0.1)]
+    public void IsNotEqual_LessSpecificTolerance_ThrowException(double value, double expected, double tolerance)
+        => Assert.Throws<GuardException>(()
+            => Guard.Value(value).IsNotEqual(expected, tolerance));
+
+    [Theory]
     [InlineData(0)]
     public void IsDefault_Zero_NoException(double number)
         => Guard.Value(number).IsDefault();

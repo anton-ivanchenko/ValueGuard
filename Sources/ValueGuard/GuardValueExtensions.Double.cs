@@ -14,6 +14,13 @@ public static partial class GuardValueExtensions
         return ref guard.IsEqual<double, DoubleConditions>(value, tolerance);
     }
 
+    public static ref readonly GuardValue<double> IsNotEqual(this in GuardValue<double> guard,
+        double value,
+        double tolerance = DefaultDoubleTolerance)
+    {
+        return ref guard.IsNotEqual<double, DoubleConditions>(value, tolerance);
+    }
+
     public static ref readonly GuardValue<double> IsDefault(this in GuardValue<double> guard)
         => ref guard.IsDefault<double, DoubleConditions>();
 

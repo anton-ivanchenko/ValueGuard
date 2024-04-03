@@ -10,6 +10,9 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<char> IsEqual(this in GuardValue<char> guard, char value)
         => ref guard.IsEqual<char, CharConditions>(value);
 
+    public static ref readonly GuardValue<char> IsNotEqual(this in GuardValue<char> guard, char value)
+        => ref guard.IsNotEqual<char, CharConditions>(value);
+
     public static ref readonly GuardValue<char> IsDigit(this in GuardValue<char> guard)
     {
         if (!char.IsDigit(guard.Value))

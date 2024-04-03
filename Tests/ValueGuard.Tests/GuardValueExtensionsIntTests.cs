@@ -13,6 +13,17 @@ public sealed class GuardValueExtensionsIntTests
         => Assert.Throws<GuardException>(()
             => Guard.Value(value).IsEqual(expected));
 
+    [Theory]
+    [InlineData(0, 2)]
+    public void IsNotEqual_NotEquals_NoException(int value, int expected)
+        => Guard.Value(value).IsNotEqual(expected);
+
+    [Theory]
+    [InlineData(0, 0)]
+    public void IsNotEqual_Equals_ThrowException(int value, int expected)
+        => Assert.Throws<GuardException>(()
+            => Guard.Value(value).IsNotEqual(expected));
+
     [Fact]
     public void IsDefault_Zero_NoException()
         => Guard.Value(0).IsDefault();
