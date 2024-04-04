@@ -27,7 +27,8 @@ public static class Guard
         throw GuardException.Create(parameterName, value, "Value must be null");
     }
 
-    public static GuardValue<T> NotNull<T>([NotNull] T? value,
+    public static GuardValue<T> NotNull<T>(
+        [NotNull] T? value,
         [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where T : struct
     {
@@ -38,10 +39,11 @@ public static class Guard
             throw GuardException.Create(parameterName, "Value cannot be null");
         }
 
-        return new GuardValue<T>(parameterName, value.Value);
+        return new(parameterName, value.Value);
     }
 
-    public static GuardValue<T> NotNull<T>([NotNull] T? value,
+    public static GuardValue<T> NotNull<T>(
+        [NotNull] T? value,
         [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where T : class
     {
@@ -52,13 +54,13 @@ public static class Guard
             throw GuardException.Create(parameterName, "Value cannot be null");
         }
 
-        return new GuardValue<T>(parameterName, value);
+        return new(parameterName, value);
     }
 
     public static GuardValue<T> Value<T>(T value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where T : notnull
     {
         parameterName ??= nameof(value);
-        return new GuardValue<T>(parameterName, value);
+        return new(parameterName, value);
     }
 }

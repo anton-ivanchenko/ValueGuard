@@ -7,19 +7,17 @@ public static partial class GuardValueExtensions
 {
     private const double DefaultDoubleTolerance = 1e-12;
 
-    public static ref readonly GuardValue<double> IsEqual(this in GuardValue<double> guard,
+    public static ref readonly GuardValue<double> IsEqual(
+        this in GuardValue<double> guard,
         double value,
         double tolerance = DefaultDoubleTolerance)
-    {
-        return ref guard.IsEqual<double, DoubleConditions>(value, tolerance);
-    }
+        => ref guard.IsEqual<double, DoubleConditions>(value, tolerance);
 
-    public static ref readonly GuardValue<double> IsNotEqual(this in GuardValue<double> guard,
+    public static ref readonly GuardValue<double> IsNotEqual(
+        this in GuardValue<double> guard,
         double value,
         double tolerance = DefaultDoubleTolerance)
-    {
-        return ref guard.IsNotEqual<double, DoubleConditions>(value, tolerance);
-    }
+        => ref guard.IsNotEqual<double, DoubleConditions>(value, tolerance);
 
     public static ref readonly GuardValue<double> IsDefault(this in GuardValue<double> guard)
         => ref guard.IsDefault<double, DoubleConditions>();
@@ -45,8 +43,11 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<double> IsLessOrEqual(this in GuardValue<double> guard, double value)
         => ref guard.IsLessOrEqual<double, DoubleConditions>(value);
 
-    public static ref readonly GuardValue<double> InRange(this in GuardValue<double> guard,
-        double min, double max,
-        bool excludeMin = false, bool excludeMax = false)
+    public static ref readonly GuardValue<double> InRange(
+        this in GuardValue<double> guard,
+        double min,
+        double max,
+        bool excludeMin = false,
+        bool excludeMax = false)
         => ref guard.InRange<double, DoubleConditions>(min, max, excludeMin, excludeMax);
 }

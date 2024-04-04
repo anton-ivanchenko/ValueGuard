@@ -54,26 +54,35 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> InRange<TValue, TCondition>(this in GuardValue<TValue> guard, TValue min, TValue max, bool excludeMin = false, bool excludeMax = false)
+    public static ref readonly GuardValue<TValue> InRange<TValue, TCondition>(
+        this in GuardValue<TValue> guard,
+        TValue min,
+        TValue max,
+        bool excludeMin = false,
+        bool excludeMax = false)
         where TCondition : struct, IHaveRangeCondition<TValue>
     {
         var comparer = default(TCondition);
 
         switch (excludeMin, excludeMax)
         {
-            case (false, false) when comparer.IsLess(guard.Value, min) || comparer.IsGreater(guard.Value, max):
+            case (false, false)
+                when comparer.IsLess(guard.Value, min) || comparer.IsGreater(guard.Value, max):
                 guard.ThrowException($"The value must be in the range {min} to {max}, inclusive");
                 break;
 
-            case (false, true) when comparer.IsLess(guard.Value, min) || comparer.IsGreaterOrEqual(guard.Value, max):
+            case (false, true)
+                when comparer.IsLess(guard.Value, min) || comparer.IsGreaterOrEqual(guard.Value, max):
                 guard.ThrowException($"The value must be in the range {min} to {max}, including min but excluding max");
                 break;
 
-            case (true, false) when comparer.IsLessOrEqual(guard.Value, min) || comparer.IsGreater(guard.Value, max):
+            case (true, false)
+                when comparer.IsLessOrEqual(guard.Value, min) || comparer.IsGreater(guard.Value, max):
                 guard.ThrowException($"The value must be in the range {min} to {max}, excluding min but including max");
                 break;
 
-            case (true, true) when comparer.IsLessOrEqual(guard.Value, min) || comparer.IsGreaterOrEqual(guard.Value, max):
+            case (true, true)
+                when comparer.IsLessOrEqual(guard.Value, min) || comparer.IsGreaterOrEqual(guard.Value, max):
                 guard.ThrowException($"The value must be in the range {min} to {max}, exclusive");
                 break;
         }

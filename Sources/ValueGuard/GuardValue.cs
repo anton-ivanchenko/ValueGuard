@@ -16,7 +16,5 @@ public readonly struct GuardValue<T>
 
     [DoesNotReturn]
     public void ThrowException(string message)
-    {
-        throw GuardException.Create(ParameterName, Value, message);
-    }
+        => throw GuardException.Create(ParameterName, Value, message);
 }

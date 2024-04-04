@@ -30,7 +30,9 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsEqual<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value,
+    public static ref readonly GuardValue<TValue> IsEqual<TValue, TCondition>(
+        this in GuardValue<TValue> guard,
+        TValue value,
         TValue tolerance)
         where TCondition : struct, IHaveEqualWithPrecisionCondition<TValue>
     {
@@ -43,7 +45,9 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsNotEqual<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value,
+    public static ref readonly GuardValue<TValue> IsNotEqual<TValue, TCondition>(
+        this in GuardValue<TValue> guard,
+        TValue value,
         TValue tolerance)
         where TCondition : struct, IHaveEqualWithPrecisionCondition<TValue>
     {
