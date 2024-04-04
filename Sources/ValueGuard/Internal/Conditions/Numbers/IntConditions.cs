@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using ValueGuard.Internal.Conditions.Abstractions;
 
-namespace ValueGuard.Internal.Conditions;
+namespace ValueGuard.Internal.Conditions.Numbers;
 
 internal readonly struct IntConditions
     : IHaveDefaultCondition<int>

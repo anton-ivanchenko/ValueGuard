@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using ValueGuard.Internal.Conditions.Abstractions;
 
-namespace ValueGuard.Internal.Conditions;
+namespace ValueGuard.Internal.Conditions.Numbers;
 
 // TODO: Perhaps a tolerance parameter is needed for all comparison methods
 
@@ -11,7 +11,7 @@ internal readonly struct DoubleConditions
     , IHaveRangeCondition<double>
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public bool IsDefault(double value) => value == 0;
+    public bool IsDefault(double value) => value == 0D;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsEqual(double left, double right, double tolerance)

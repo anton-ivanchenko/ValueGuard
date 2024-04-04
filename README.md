@@ -15,6 +15,7 @@ Primitive types:
 - [ ] ulong
 - [ ] float
 - [x] double
+- [ ] decimal
 - [ ] string
 
 Date and time types:  

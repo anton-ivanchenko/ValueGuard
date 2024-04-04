@@ -1,5 +1,5 @@
 using ValueGuard.Internal;
-using ValueGuard.Internal.Conditions;
+using ValueGuard.Internal.Conditions.Numbers;
 
 namespace ValueGuard;
 

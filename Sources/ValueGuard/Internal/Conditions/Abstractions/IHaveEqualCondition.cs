@@ -1,6 +1,6 @@
 namespace ValueGuard.Internal.Conditions.Abstractions;
 
-public interface IHaveEqualCondition<T>
+internal interface IHaveEqualCondition<T>
 {
     bool IsEqual(T left, T right);
 }
