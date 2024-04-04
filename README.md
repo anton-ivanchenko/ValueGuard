@@ -5,8 +5,8 @@ Work in progress...
 Primitive types:  
 - [x] bool
 - [x] char
-- [ ] sbyte
-- [ ] byte
+- [x] sbyte
+- [x] byte
 - [ ] short
 - [ ] ushort
 - [x] int
