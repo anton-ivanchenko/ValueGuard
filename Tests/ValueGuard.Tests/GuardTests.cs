@@ -2,47 +2,57 @@ namespace ValueGuard.Tests;
 
 public sealed class GuardTests
 {
-    [Fact]
-    public void Null_ValueType_NullValue_NoException()
-        => Guard.Null((int?)null);
+    [Theory]
+    [InlineData(null)]
+    public void Null_ValueType_NullValue_NoException(int? number)
+        => Guard.Null(number);
 
-    [Fact]
-    public void Null_ValueType_NotNullValue_ThrowException()
+    [Theory]
+    [InlineData(0)]
+    public void Null_ValueType_NotNullValue_ThrowException(int? number)
         => Assert.Throws<GuardException>(()
-            => Guard.Null((int?)0));
+            => Guard.Null(number));
 
-    [Fact]
-    public void Null_ReferenceType_NullValue_NoException()
-        => Guard.Null((object?)null);
+    [Theory]
+    [InlineData(null)]
+    public void Null_ReferenceType_NullValue_NoException(object? instance)
+        => Guard.Null(instance);
 
-    [Fact]
-    public void Null_ReferenceType_NotNullValue_ThrowException()
+    [Theory]
+    [InlineData(0)]
+    public void Null_ReferenceType_NotNullValue_ThrowException(object? instance)
         => Assert.Throws<GuardException>(()
-            => Guard.Null(new object()));
+            => Guard.Null(instance));
 
-    [Fact]
-    public void NotNull_ValueType_NullValue_ThrowException()
+    [Theory]
+    [InlineData(null)]
+    public void NotNull_ValueType_NullValue_ThrowException(int? number)
         => Assert.Throws<GuardException>(()
-            => Guard.NotNull((int?)null));
+            => Guard.NotNull(number));
 
-    [Fact]
-    public void NotNull_ValueType_NotNullValue_NoException()
-        => Guard.NotNull((int?)0);
+    [Theory]
+    [InlineData(0)]
+    public void NotNull_ValueType_NotNullValue_NoException(int? number)
+        => Guard.NotNull(number);
 
-    [Fact]
-    public void NotNull_ReferenceType_NullValue_ThrowException()
+    [Theory]
+    [InlineData(null)]
+    public void NotNull_ReferenceType_NullValue_ThrowException(object? instance)
         => Assert.Throws<GuardException>(()
-            => Guard.NotNull((object?)null));
+            => Guard.NotNull(instance));
 
-    [Fact]
-    public void NotNull_ReferenceType_NotNullValue_NoException()
-        => Guard.NotNull(new object());
+    [Theory]
+    [InlineData(0)]
+    public void NotNull_ReferenceType_NotNullValue_NoException(object? instance)
+        => Guard.NotNull(instance);
 
-    [Fact]
-    public void Value_ValueType_NoException()
-        => Guard.Value(0);
+    [Theory]
+    [InlineData(0)]
+    public void Value_ValueType_NoException(int number)
+        => Guard.Value(number);
 
-    [Fact]
-    public void Value_ReferenceType_NoException()
-        => Guard.Value(new object());
+    [Theory]
+    [InlineData(0)]
+    public void Value_ReferenceType_NoException(object instance)
+        => Guard.Value(instance);
 }

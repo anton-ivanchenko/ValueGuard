@@ -4,117 +4,121 @@ public sealed class GuardValueExtensionsIntTests
 {
     [Theory]
     [InlineData(10, 10)]
-    public void IsEqual_Equals_NoException(int value, int expected)
-        => Guard.Value(value).IsEqual(expected);
+    public void IsEqual_Equals_NoException(int value, int comparableValue)
+        => Guard.Value(value).IsEqual(comparableValue);
 
     [Theory]
     [InlineData(10, 20)]
-    public void IsEqual_NoEquals_ThrowException(int value, int expected)
+    public void IsEqual_NoEquals_ThrowException(int value, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(expected));
+            => Guard.Value(value).IsEqual(comparableValue));
 
     [Theory]
     [InlineData(0, 2)]
-    public void IsNotEqual_NotEquals_NoException(int value, int expected)
-        => Guard.Value(value).IsNotEqual(expected);
+    public void IsNotEqual_NotEquals_NoException(int value, int comparableValue)
+        => Guard.Value(value).IsNotEqual(comparableValue);
 
     [Theory]
     [InlineData(0, 0)]
-    public void IsNotEqual_Equals_ThrowException(int value, int expected)
+    public void IsNotEqual_Equals_ThrowException(int value, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsNotEqual(expected));
+            => Guard.Value(value).IsNotEqual(comparableValue));
 
-    [Fact]
-    public void IsDefault_Zero_NoException()
-        => Guard.Value(0).IsDefault();
+    [Theory]
+    [InlineData(0)]
+    public void IsDefault_Zero_NoException(int value)
+        => Guard.Value(value).IsDefault();
 
     [Theory]
     [InlineData(-1)]
     [InlineData(1)]
-    public void IsDefault_NoZero_ThrowException(int number)
+    public void IsDefault_NoZero_ThrowException(int value)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsDefault());
+            => Guard.Value(value).IsDefault());
 
     [Theory]
     [InlineData(-1)]
     [InlineData(1)]
-    public void IsNotDefault_NotZero_NoException(int number)
-        => Guard.Value(number).IsNotDefault();
+    public void IsNotDefault_NotZero_NoException(int value)
+        => Guard.Value(value).IsNotDefault();
 
-    [Fact]
-    public void IsNotDefault_Zero_ThrowException()
+    [Theory]
+    [InlineData(0)]
+    public void IsNotDefault_Zero_ThrowException(int value)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(0).IsNotDefault());
+            => Guard.Value(value).IsNotDefault());
 
-    [Fact]
-    public void IsPositive_Positive_NoException()
-        => Guard.Value(1).IsPositive();
+    [Theory]
+    [InlineData(1)]
+    public void IsPositive_Positive_NoException(int value)
+        => Guard.Value(value).IsPositive();
 
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]
-    public void IsPositive_NotPositive_ThrowException(int number)
+    public void IsPositive_NotPositive_ThrowException(int value)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsPositive());
+            => Guard.Value(value).IsPositive());
 
-    [Fact]
-    public void IsNegative_Negative_NoException()
-        => Guard.Value(-1).IsNegative();
+    [Theory]
+    [InlineData(-1)]
+    public void IsNegative_Negative_NoException(int value)
+        => Guard.Value(value).IsNegative();
 
     [Theory]
     [InlineData(0)]
     [InlineData(1)]
-    public void IsNegative_Positive_ThrowException(int number)
+    public void IsNegative_Positive_ThrowException(int value)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsNegative());
+            => Guard.Value(value).IsNegative());
 
     [Theory]
     [InlineData(5, 0)]
-    public void IsGreater_GreaterThanValue_NoException(int number, int comparableValue)
-        => Guard.Value(number).IsGreater(comparableValue);
+    public void IsGreater_GreaterThanValue_NoException(int value, int comparableValue)
+        => Guard.Value(value).IsGreater(comparableValue);
 
     [Theory]
     [InlineData(0, 5)]
     [InlineData(5, 5)]
-    public void IsGreater_LessOrEqualThanValue_ThrowException(int number, int comparableValue)
+    public void IsGreater_LessOrEqualThanValue_ThrowException(int value, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsGreater(comparableValue));
+            => Guard.Value(value).IsGreater(comparableValue));
 
     [Theory]
     [InlineData(5, 0)]
     [InlineData(5, 5)]
-    public void IsGreaterOrEqual_GreaterOrEqualThanValue_NoException(int number, int comparableValue)
-        => Guard.Value(number).IsGreaterOrEqual(comparableValue);
+    public void IsGreaterOrEqual_GreaterOrEqualThanValue_NoException(int value, int comparableValue)
+        => Guard.Value(value).IsGreaterOrEqual(comparableValue);
 
     [Theory]
     [InlineData(0, 5)]
-    public void IsGreaterOrEqual_LessThanValue_ThrowException(int number, int comparableValue)
+    public void IsGreaterOrEqual_LessThanValue_ThrowException(int value, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsGreaterOrEqual(comparableValue));
+            => Guard.Value(value).IsGreaterOrEqual(comparableValue));
 
     [Theory]
     [InlineData(0, 5)]
-    public void IsLess_LessThanValue_NoException(int number, int comparableValue)
-        => Guard.Value(number).IsLess(comparableValue);
+    public void IsLess_LessThanValue_NoException(int value, int comparableValue)
+        => Guard.Value(value).IsLess(comparableValue);
 
     [Theory]
     [InlineData(5, 0)]
     [InlineData(5, 5)]
-    public void IsLess_GreaterOrEqualThanValue_ThrowException(int number, int comparableValue)
+    public void IsLess_GreaterOrEqualThanValue_ThrowException(int value, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsLess(comparableValue));
+            => Guard.Value(value).IsLess(comparableValue));
 
     [Theory]
     [InlineData(2, 5)]
     [InlineData(5, 5)]
-    public void IsLessOrEqual_LessOrEqualThanNumber_NoException(int number, int comparableValue)
-        => Guard.Value(number).IsLessOrEqual(comparableValue);
+    public void IsLessOrEqual_LessOrEqualThanNumber_NoException(int value, int comparableValue)
+        => Guard.Value(value).IsLessOrEqual(comparableValue);
 
     [Theory]
     [InlineData(8, 5)]
-    public void IsLessOrEqual_GreaterThanNumber_ThrowException(int number, int comparableValue)
+    public void IsLessOrEqual_GreaterThanNumber_ThrowException(int value, int comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(number).IsLessOrEqual(comparableValue));
+            => Guard.Value(value).IsLessOrEqual(comparableValue));
 
     [Theory]
     [InlineData(0, 0, 10, false, false)]
