@@ -36,6 +36,8 @@ internal static partial class InternalGuardValueExtensions
         TValue tolerance)
         where TCondition : struct, IHaveEqualWithPrecisionCondition<TValue>
     {
+        // TODO: The "tolerance" value must also be validated
+
         if (!default(TCondition).IsEqual(guard.Value, value, tolerance))
         {
             guard.ThrowException($"The value must be '{value}', with a possible tolerance of less than '{tolerance}'");
@@ -51,6 +53,8 @@ internal static partial class InternalGuardValueExtensions
         TValue tolerance)
         where TCondition : struct, IHaveEqualWithPrecisionCondition<TValue>
     {
+        // TODO: The "tolerance" value must also be validated
+
         if (default(TCondition).IsEqual(guard.Value, value, tolerance))
         {
             guard.ThrowException($"The value cannot be '{value}', with a possible tolerance of less than '{tolerance}'");
