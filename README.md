@@ -11,8 +11,8 @@ Primitive types:
 - [x] ushort
 - [x] int
 - [x] uint
-- [ ] long
-- [ ] ulong
+- [x] long
+- [x] ulong
 - [ ] float
 - [x] double
 - [ ] decimal
