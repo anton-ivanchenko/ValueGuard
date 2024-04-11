@@ -10,7 +10,7 @@ Primitive types:
 - [x] short
 - [x] ushort
 - [x] int
-- [ ] uint
+- [x] uint
 - [ ] long
 - [ ] ulong
 - [ ] float
