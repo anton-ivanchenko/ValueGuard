@@ -7,8 +7,8 @@ Primitive types:
 - [x] char
 - [x] sbyte
 - [x] byte
-- [ ] short
-- [ ] ushort
+- [x] short
+- [x] ushort
 - [x] int
 - [ ] uint
 - [ ] long
