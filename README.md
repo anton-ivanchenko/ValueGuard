@@ -13,7 +13,7 @@ Primitive types:
 - [x] uint
 - [x] long
 - [x] ulong
-- [ ] float
+- [x] float
 - [x] double
 - [ ] decimal
 - [ ] string
