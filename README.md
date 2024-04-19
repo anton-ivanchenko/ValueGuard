@@ -31,3 +31,6 @@ Collections:
 - [ ] List
 - [ ] Dictionary
 - [ ] IEnumerable
+
+Security:
+- [ ] Hide parameter values
