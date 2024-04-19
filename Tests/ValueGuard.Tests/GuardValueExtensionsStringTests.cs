@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace ValueGuard.Tests;
 
 public sealed class GuardValueExtensionsStringTests
@@ -83,4 +85,63 @@ public sealed class GuardValueExtensionsStringTests
     public void IsNotWhiteSpace_TabString_ThrowException()
         => Assert.Throws<GuardException>(()
             => Guard.NotNull("\t").IsNotWhiteSpace());
+
+    [Fact]
+    public void MinLength_LessThanString_NoException()
+        => Guard.Value("value").MinLength(2);
+
+    [Fact]
+    public void MinLength_GreaterThenString_ThrowException()
+        => Assert.Throws<GuardException>(()
+            => Guard.Value("value").MinLength(10));
+
+    [Fact]
+    public void MaxLength_GreaterThanString_NoException()
+        => Guard.Value("value").MaxLength(10);
+
+    [Fact]
+    public void MaxLength_LessThenString_ThrowException()
+        => Assert.Throws<GuardException>(()
+            => Guard.Value("value").MaxLength(4));
+
+    [Fact]
+    public void ExactLength_EqualThanString_NoException()
+        => Guard.Value("value").ExactLength(5);
+
+    [Fact]
+    public void ExactLength_NotEqualThenString_ThrowException()
+        => Assert.Throws<GuardException>(()
+            => Guard.Value("value").ExactLength(6));
+
+    [Fact]
+    public void LengthInRange_InRangeString_NoException()
+        => Guard.Value("value").LengthInRange(0, 10);
+
+    [Fact]
+    public void LengthInRange_GreaterThanRangeString_NoException()
+        => Assert.Throws<GuardException>(()
+            => Guard.Value("value").LengthInRange(0, 4));
+
+    [Fact]
+    public void LengthInRange_LessThenRangeString_NoException()
+        => Assert.Throws<GuardException>(()
+            => Guard.Value("value").LengthInRange(10, 20));
+
+    [Fact]
+    public void IsMatchesPattern_MatchStringPattern_NoException()
+        => Guard.Value("255").IsMatchesPattern(@"^\d+$");
+
+    [Fact]
+    public void IsMatchesPattern_NotMatchStringPattern_ThrowException()
+        => Assert.Throws<GuardException>(()
+            => Guard.Value("W255A").IsMatchesPattern(@"^\d+$"));
+
+    [Fact]
+    public void IsMatchesPattern_MatchRegexPattern_NoException()
+        => Guard.Value("255").IsMatchesPattern(new Regex(@"^\d+$"));
+
+    [Fact]
+    public void IsMatchesPattern_NotMatchRegexPattern_ThrowException()
+        => Assert.Throws<GuardException>(()
+            => Guard.Value("W255A").IsMatchesPattern(new Regex(@"^\d+$")));
 }

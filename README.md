@@ -16,7 +16,7 @@ Primitive types:
 - [x] float
 - [x] double
 - [x] decimal
-- [ ] string
+- [x] string
 
 Date and time types:  
 - [ ] DateTime

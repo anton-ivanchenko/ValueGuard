@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using ValueGuard.Internal;
 
 namespace ValueGuard;
@@ -57,6 +58,66 @@ public static partial class GuardValueExtensions
         if (string.IsNullOrWhiteSpace(guard.Value))
         {
             guard.ThrowException("String cannot be null and must have at least one not white space character");
+        }
+
+        return ref guard;
+    }
+
+    public static ref readonly GuardValue<string> MinLength(this in GuardValue<string> guard, int minLength)
+    {
+        if (guard.Value.Length < minLength)
+        {
+            guard.ThrowException($"String length must be at least {minLength} characters");
+        }
+
+        return ref guard;
+    }
+
+    public static ref readonly GuardValue<string> MaxLength(this in GuardValue<string> guard, int maxLength)
+    {
+        if (guard.Value.Length > maxLength)
+        {
+            guard.ThrowException($"String length must not exceed {maxLength} characters");
+        }
+
+        return ref guard;
+    }
+
+    public static ref readonly GuardValue<string> ExactLength(this in GuardValue<string> guard, int exactLength)
+    {
+        if (guard.Value.Length != exactLength)
+        {
+            guard.ThrowException($"String length must be exactly {exactLength} characters");
+        }
+
+        return ref guard;
+    }
+
+    public static ref readonly GuardValue<string> LengthInRange(this in GuardValue<string> guard, int minLength, int maxLength)
+    {
+        if (guard.Value.Length < minLength || guard.Value.Length > maxLength)
+        {
+            guard.ThrowException($"String length must be between {minLength} and {maxLength} characters");
+        }
+
+        return ref guard;
+    }
+
+    public static ref readonly GuardValue<string> IsMatchesPattern(this in GuardValue<string> guard, string pattern)
+    {
+        if (!Regex.IsMatch(guard.Value, pattern))
+        {
+            guard.ThrowException($"String does not match the required pattern: {pattern}");
+        }
+
+        return ref guard;
+    }
+
+    public static ref readonly GuardValue<string> IsMatchesPattern(this in GuardValue<string> guard, Regex pattern)
+    {
+        if (!pattern.IsMatch(guard.Value))
+        {
+            guard.ThrowException($"String does not match the required pattern: {pattern}");
         }
 
         return ref guard;
