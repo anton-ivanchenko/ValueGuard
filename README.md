@@ -19,8 +19,8 @@ Primitive types:
 - [x] string
 
 Date and time types:  
-- [ ] DateTime
-- [ ] TimeSpan
+- [x] DateTime
+- [x] TimeSpan
 
 Other types:  
 - [ ] Guid
