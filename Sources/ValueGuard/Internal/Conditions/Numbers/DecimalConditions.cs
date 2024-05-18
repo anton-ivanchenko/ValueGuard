@@ -7,7 +7,7 @@ namespace ValueGuard.Internal.Conditions.Numbers;
 
 internal readonly struct DecimalConditions
     : IHaveDefaultCondition<decimal>
-    , IHaveEqualWithPrecisionCondition<decimal>
+    , IHaveEqualWithToleranceCondition<decimal, decimal>
     , IHaveRangeCondition<decimal>
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

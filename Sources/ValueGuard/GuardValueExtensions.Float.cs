@@ -5,19 +5,19 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    private const float DefaultFloatTolerance = 1e-12f;
+    private const float _defaultFloatTolerance = 1e-12f;
 
     public static ref readonly GuardValue<float> IsEqual(
         this in GuardValue<float> guard,
         float value,
-        float tolerance = DefaultFloatTolerance)
-        => ref guard.IsEqual<float, FloatConditions>(value, tolerance);
+        float tolerance = _defaultFloatTolerance)
+        => ref guard.IsEqual<float, float, FloatConditions>(value, tolerance);
 
     public static ref readonly GuardValue<float> IsNotEqual(
         this in GuardValue<float> guard,
         float value,
-        float tolerance = DefaultFloatTolerance)
-        => ref guard.IsNotEqual<float, FloatConditions>(value, tolerance);
+        float tolerance = _defaultFloatTolerance)
+        => ref guard.IsNotEqual<float, float, FloatConditions>(value, tolerance);
 
     public static ref readonly GuardValue<float> IsDefault(this in GuardValue<float> guard)
         => ref guard.IsDefault<float, FloatConditions>();

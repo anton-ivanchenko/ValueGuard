@@ -5,19 +5,19 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    private const double DefaultDoubleTolerance = 1e-12;
+    private const double _defaultDoubleTolerance = 1e-12;
 
     public static ref readonly GuardValue<double> IsEqual(
         this in GuardValue<double> guard,
         double value,
-        double tolerance = DefaultDoubleTolerance)
-        => ref guard.IsEqual<double, DoubleConditions>(value, tolerance);
+        double tolerance = _defaultDoubleTolerance)
+        => ref guard.IsEqual<double, double, DoubleConditions>(value, tolerance);
 
     public static ref readonly GuardValue<double> IsNotEqual(
         this in GuardValue<double> guard,
         double value,
-        double tolerance = DefaultDoubleTolerance)
-        => ref guard.IsNotEqual<double, DoubleConditions>(value, tolerance);
+        double tolerance = _defaultDoubleTolerance)
+        => ref guard.IsNotEqual<double, double, DoubleConditions>(value, tolerance);
 
     public static ref readonly GuardValue<double> IsDefault(this in GuardValue<double> guard)
         => ref guard.IsDefault<double, DoubleConditions>();

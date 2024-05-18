@@ -7,7 +7,7 @@ namespace ValueGuard.Internal.Conditions.Numbers;
 
 internal readonly struct FloatConditions
     : IHaveDefaultCondition<float>
-    , IHaveEqualWithPrecisionCondition<float>
+    , IHaveEqualWithToleranceCondition<float, float>
     , IHaveRangeCondition<float>
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

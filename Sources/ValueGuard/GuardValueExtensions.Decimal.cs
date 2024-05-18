@@ -11,13 +11,13 @@ public static partial class GuardValueExtensions
         this in GuardValue<decimal> guard,
         decimal value,
         decimal tolerance = DefaultDecimalTolerance)
-        => ref guard.IsEqual<decimal, DecimalConditions>(value, tolerance);
+        => ref guard.IsEqual<decimal, decimal, DecimalConditions>(value, tolerance);
 
     public static ref readonly GuardValue<decimal> IsNotEqual(
         this in GuardValue<decimal> guard,
         decimal value,
         decimal tolerance = DefaultDecimalTolerance)
-        => ref guard.IsNotEqual<decimal, DecimalConditions>(value, tolerance);
+        => ref guard.IsNotEqual<decimal, decimal, DecimalConditions>(value, tolerance);
 
     public static ref readonly GuardValue<decimal> IsDefault(this in GuardValue<decimal> guard)
         => ref guard.IsDefault<decimal, DecimalConditions>();
