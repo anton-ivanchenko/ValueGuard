@@ -23,7 +23,7 @@ Date and time types:
 - [x] TimeSpan
 
 Other types:  
-- [ ] Guid
+- [x] Guid
 - [ ] Uri
 
 Collections:  
