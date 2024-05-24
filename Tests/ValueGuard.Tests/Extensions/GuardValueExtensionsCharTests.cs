@@ -1,4 +1,4 @@
-namespace ValueGuard.Tests;
+namespace ValueGuard.Tests.Extensions;
 
 public sealed class GuardValueExtensionsCharTests
 {

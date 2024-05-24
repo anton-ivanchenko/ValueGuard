@@ -2,17 +2,11 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace ValueGuard;
 
-public readonly struct GuardValue<T>
+public readonly struct GuardValue<T>(string parameterName, T value)
 {
-    public GuardValue(string parameterName, T value)
-    {
-        Value = value;
-        ParameterName = parameterName;
-    }
+    public string ParameterName { get; } = parameterName;
 
-    public string ParameterName { get; }
-
-    public T Value { get; }
+    public T Value { get; } = value;
 
     [DoesNotReturn]
     public void ThrowException(string message)

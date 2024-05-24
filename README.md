@@ -33,4 +33,4 @@ Collections:
 - [ ] IEnumerable
 
 Security:
-- [ ] Hide parameter values
+- [x] Hide parameter values

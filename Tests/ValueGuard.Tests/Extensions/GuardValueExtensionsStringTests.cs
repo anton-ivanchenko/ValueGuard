@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace ValueGuard.Tests;
+namespace ValueGuard.Tests.Extensions;
 
 public sealed class GuardValueExtensionsStringTests
 {
