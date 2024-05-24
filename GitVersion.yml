@@ -1,0 +1,17 @@
+branches:
+  master:
+    tag: ''
+    increment: patch
+  develop:
+    tag: 'beta'
+    increment: minor
+  feature:
+    tag: 'feature'
+    increment: minor
+  hotfix:
+    tag: 'hotfix'
+    increment: patch
+  release:
+    tag: 'rc'
+    increment: minor
+

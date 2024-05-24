@@ -1,0 +1,62 @@
+# This workflow will build and publish a .NET project to NuGet.org
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: nuget.org
+
+    steps:
+      # Check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      # Set up .NET Core
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 6.0.x
+
+      # Install GitVersion
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.14
+        with:
+          versionSpec: '5.x'
+      
+      # Run GitVersion to calculate the version
+      - name: Determine Version
+        uses: gittools/actions/gitversion/execute@v1.1.1
+        with:
+          useConfigFile: true
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+      
+      # Build the project
+      - name: Build
+        run: dotnet build --no-restore --configuration Release /p:Version=${{ env.GitVersion_FullSemVer }}
+      
+      # Run tests
+      - name: Test
+        run: dotnet test --no-build --verbosity normal --configuration Release
+      
+      # Pack the project
+      - name: Pack
+        run: dotnet pack --no-build --output ./nupkg --configuration Release /p:PackageVersion=${{ env.GitVersion_FullSemVer }}
+      
+      # Publish to NuGet.org
+      - name: Publish to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push "./nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key $NUGET_API_KEY

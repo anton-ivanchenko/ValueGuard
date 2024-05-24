@@ -7,4 +7,17 @@
         <LangVersion>preview</LangVersion>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>Anton Ivanchenko</Authors>
+        <RepositoryUrl>https://github.com/anton-ivanchenko/ValueGuard</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath="$(PackageReadmeFile)" Visible="false"/>
+        <None Include="../../LICENSE.md" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false"/>
+    </ItemGroup>
+
 </Project>
