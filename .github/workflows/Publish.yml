@@ -5,9 +5,9 @@ name: .NET
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "develop" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "develop" ]
 
 jobs:
   build:
@@ -45,7 +45,7 @@ jobs:
       
       # Build the project
       - name: Build
-        run: dotnet build --no-restore --configuration Release /p:Version=${{ env.GitVersion_FullSemVer }}
+        run: dotnet build --no-restore --configuration Release /p:Version=${{ env.GitVersion_FullSemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemVer }} /p:FileVersion=${{ env.GitVersion_AssemblySemFileVer }} /p:InformationalVersion=${{ env.GitVersion_InformationalVersion }}
       
       # Run tests
       - name: Test
@@ -53,7 +53,7 @@ jobs:
       
       # Pack the project
       - name: Pack
-        run: dotnet pack --no-build --output ./nupkg --configuration Release /p:PackageVersion=${{ env.GitVersion_FullSemVer }}
+        run: dotnet pack --no-build --output "./nupkg" --configuration Release /p:PackageVersion=${{ env.GitVersion_NuGetVersion }}
       
       # Publish to NuGet.org
       - name: Publish to NuGet
