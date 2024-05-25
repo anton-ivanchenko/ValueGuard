@@ -3,7 +3,7 @@ using ValueGuard.Internal.Conditions.Abstractions;
 
 namespace ValueGuard.Internal.Conditions;
 
-internal struct DateTimeConditions
+internal readonly struct DateTimeConditions
     : IHaveDefaultCondition<DateTime>
     , IHaveEqualCondition<DateTime>
     , IHaveEqualWithToleranceCondition<DateTime, TimeSpan>

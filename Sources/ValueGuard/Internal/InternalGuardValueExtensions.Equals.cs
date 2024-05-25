@@ -6,7 +6,7 @@ namespace ValueGuard.Internal;
 internal static partial class InternalGuardValueExtensions
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsEqual<TValue>(
+    public static ref readonly GuardValue<TValue> Equal<TValue>(
         this in GuardValue<TValue> guard,
         TValue value,
         IEqualityComparer<TValue> comparer)
@@ -21,7 +21,7 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsEqual<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value)
+    public static ref readonly GuardValue<TValue> Equal<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value)
         where TCondition : struct, IHaveEqualCondition<TValue>
     {
         if (!default(TCondition).IsEqual(guard.Value, value))
@@ -33,7 +33,7 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsEqual<TValue, TTolerance, TCondition>(
+    public static ref readonly GuardValue<TValue> Equal<TValue, TTolerance, TCondition>(
         this in GuardValue<TValue> guard,
         TValue value,
         TTolerance tolerance)
@@ -50,7 +50,7 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsNotEqual<TValue>(
+    public static ref readonly GuardValue<TValue> NotEqual<TValue>(
         this in GuardValue<TValue> guard,
         TValue value,
         IEqualityComparer<TValue> comparer)
@@ -65,7 +65,7 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsNotEqual<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value)
+    public static ref readonly GuardValue<TValue> NotEqual<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value)
         where TCondition : struct, IHaveEqualCondition<TValue>
     {
         if (default(TCondition).IsEqual(guard.Value, value))
@@ -76,7 +76,7 @@ internal static partial class InternalGuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<TValue> IsNotEqual<TValue, TTolerance, TCondition>(
+    public static ref readonly GuardValue<TValue> NotEqual<TValue, TTolerance, TCondition>(
         this in GuardValue<TValue> guard,
         TValue value,
         TTolerance tolerance)

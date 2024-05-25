@@ -5,11 +5,11 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<sbyte> IsEqual(this in GuardValue<sbyte> guard, sbyte value)
-        => ref guard.IsEqual<sbyte, SByteConditions>(value);
+    public static ref readonly GuardValue<sbyte> Equal(this in GuardValue<sbyte> guard, sbyte value)
+        => ref guard.Equal<sbyte, SByteConditions>(value);
 
-    public static ref readonly GuardValue<sbyte> IsNotEqual(this in GuardValue<sbyte> guard, sbyte value)
-        => ref guard.IsNotEqual<sbyte, SByteConditions>(value);
+    public static ref readonly GuardValue<sbyte> NotEqual(this in GuardValue<sbyte> guard, sbyte value)
+        => ref guard.NotEqual<sbyte, SByteConditions>(value);
 
     public static ref readonly GuardValue<sbyte> IsDefault(this in GuardValue<sbyte> guard)
         => ref guard.IsDefault<sbyte, SByteConditions>();
@@ -18,22 +18,22 @@ public static partial class GuardValueExtensions
         => ref guard.IsNotDefault<sbyte, SByteConditions>();
 
     public static ref readonly GuardValue<sbyte> IsPositive(this in GuardValue<sbyte> guard)
-        => ref guard.IsGreater<sbyte, SByteConditions>(default);
+        => ref guard.Greater<sbyte, SByteConditions>(default);
 
     public static ref readonly GuardValue<sbyte> IsNegative(this in GuardValue<sbyte> guard)
-        => ref guard.IsLess<sbyte, SByteConditions>(default);
+        => ref guard.Less<sbyte, SByteConditions>(default);
 
-    public static ref readonly GuardValue<sbyte> IsGreater(this in GuardValue<sbyte> guard, sbyte value)
-        => ref guard.IsGreater<sbyte, SByteConditions>(value);
+    public static ref readonly GuardValue<sbyte> Greater(this in GuardValue<sbyte> guard, sbyte value)
+        => ref guard.Greater<sbyte, SByteConditions>(value);
 
-    public static ref readonly GuardValue<sbyte> IsGreaterOrEqual(this in GuardValue<sbyte> guard, sbyte value)
-        => ref guard.IsGreaterOrEqual<sbyte, SByteConditions>(value);
+    public static ref readonly GuardValue<sbyte> GreaterOrEqual(this in GuardValue<sbyte> guard, sbyte value)
+        => ref guard.GreaterOrEqual<sbyte, SByteConditions>(value);
 
-    public static ref readonly GuardValue<sbyte> IsLess(this in GuardValue<sbyte> guard, sbyte value)
-        => ref guard.IsLess<sbyte, SByteConditions>(value);
+    public static ref readonly GuardValue<sbyte> Less(this in GuardValue<sbyte> guard, sbyte value)
+        => ref guard.Less<sbyte, SByteConditions>(value);
 
-    public static ref readonly GuardValue<sbyte> IsLessOrEqual(this in GuardValue<sbyte> guard, sbyte value)
-        => ref guard.IsLessOrEqual<sbyte, SByteConditions>(value);
+    public static ref readonly GuardValue<sbyte> LessOrEqual(this in GuardValue<sbyte> guard, sbyte value)
+        => ref guard.LessOrEqual<sbyte, SByteConditions>(value);
 
     public static ref readonly GuardValue<sbyte> InRange(
         this in GuardValue<sbyte> guard,

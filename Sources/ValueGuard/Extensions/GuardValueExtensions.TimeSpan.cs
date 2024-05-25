@@ -5,23 +5,23 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<TimeSpan> IsEqual(this in GuardValue<TimeSpan> guard, TimeSpan value)
-        => ref guard.IsEqual<TimeSpan, TimeSpanConditions>(value);
+    public static ref readonly GuardValue<TimeSpan> Equal(this in GuardValue<TimeSpan> guard, TimeSpan value)
+        => ref guard.Equal<TimeSpan, TimeSpanConditions>(value);
 
-    public static ref readonly GuardValue<TimeSpan> IsEqual(
+    public static ref readonly GuardValue<TimeSpan> Equal(
         this in GuardValue<TimeSpan> guard,
         TimeSpan value,
         TimeSpan tolerance)
-        => ref guard.IsEqual<TimeSpan, TimeSpan, TimeSpanConditions>(value, tolerance);
+        => ref guard.Equal<TimeSpan, TimeSpan, TimeSpanConditions>(value, tolerance);
 
-    public static ref readonly GuardValue<TimeSpan> IsNotEqual(this in GuardValue<TimeSpan> guard, TimeSpan value)
-        => ref guard.IsNotEqual<TimeSpan, TimeSpanConditions>(value);
+    public static ref readonly GuardValue<TimeSpan> NotEqual(this in GuardValue<TimeSpan> guard, TimeSpan value)
+        => ref guard.NotEqual<TimeSpan, TimeSpanConditions>(value);
 
-    public static ref readonly GuardValue<TimeSpan> IsNotEqual(
+    public static ref readonly GuardValue<TimeSpan> NotEqual(
         this in GuardValue<TimeSpan> guard,
         TimeSpan value,
         TimeSpan tolerance)
-        => ref guard.IsNotEqual<TimeSpan, TimeSpan, TimeSpanConditions>(value, tolerance);
+        => ref guard.NotEqual<TimeSpan, TimeSpan, TimeSpanConditions>(value, tolerance);
 
     public static ref readonly GuardValue<TimeSpan> IsDefault(this in GuardValue<TimeSpan> guard)
         => ref guard.IsDefault<TimeSpan, TimeSpanConditions>();
@@ -29,17 +29,17 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<TimeSpan> IsNotDefault(this in GuardValue<TimeSpan> guard)
         => ref guard.IsNotDefault<TimeSpan, TimeSpanConditions>();
 
-    public static ref readonly GuardValue<TimeSpan> IsGreater(this in GuardValue<TimeSpan> guard, TimeSpan value)
-        => ref guard.IsGreater<TimeSpan, TimeSpanConditions>(value);
+    public static ref readonly GuardValue<TimeSpan> Greater(this in GuardValue<TimeSpan> guard, TimeSpan value)
+        => ref guard.Greater<TimeSpan, TimeSpanConditions>(value);
 
-    public static ref readonly GuardValue<TimeSpan> IsGreaterOrEqual(this in GuardValue<TimeSpan> guard, TimeSpan value)
-        => ref guard.IsGreaterOrEqual<TimeSpan, TimeSpanConditions>(value);
+    public static ref readonly GuardValue<TimeSpan> GreaterOrEqual(this in GuardValue<TimeSpan> guard, TimeSpan value)
+        => ref guard.GreaterOrEqual<TimeSpan, TimeSpanConditions>(value);
 
-    public static ref readonly GuardValue<TimeSpan> IsLess(this in GuardValue<TimeSpan> guard, TimeSpan value)
-        => ref guard.IsLess<TimeSpan, TimeSpanConditions>(value);
+    public static ref readonly GuardValue<TimeSpan> Less(this in GuardValue<TimeSpan> guard, TimeSpan value)
+        => ref guard.Less<TimeSpan, TimeSpanConditions>(value);
 
-    public static ref readonly GuardValue<TimeSpan> IsLessOrEqual(this in GuardValue<TimeSpan> guard, TimeSpan value)
-        => ref guard.IsLessOrEqual<TimeSpan, TimeSpanConditions>(value);
+    public static ref readonly GuardValue<TimeSpan> LessOrEqual(this in GuardValue<TimeSpan> guard, TimeSpan value)
+        => ref guard.LessOrEqual<TimeSpan, TimeSpanConditions>(value);
 
     public static ref readonly GuardValue<TimeSpan> InRange(
         this in GuardValue<TimeSpan> guard,

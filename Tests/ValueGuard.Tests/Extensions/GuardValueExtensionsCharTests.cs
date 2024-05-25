@@ -5,24 +5,24 @@ public sealed class GuardValueExtensionsCharTests
     [Theory]
     [InlineData('a', 'a')]
     public void IsEqual_Equals_NoException(char value, char expected)
-        => Guard.Value(value).IsEqual(expected);
+        => Guard.Value(value).Equal(expected);
 
     [Theory]
     [InlineData('a', 'b')]
     public void IsEqual_NotEquals_ThrowException(char value, char expected)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(expected));
+            => Guard.Value(value).Equal(expected));
 
     [Theory]
     [InlineData('a', 'b')]
     public void IsNotEqual_NotEquals_NoException(char value, char expected)
-        => Guard.Value(value).IsNotEqual(expected);
+        => Guard.Value(value).NotEqual(expected);
 
     [Theory]
     [InlineData('a', 'a')]
     public void IsNotEqual_Equals_ThrowException(char value, char expected)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsNotEqual(expected));
+            => Guard.Value(value).NotEqual(expected));
 
     [Fact]
     public void IsDigit_Digit_NoException()

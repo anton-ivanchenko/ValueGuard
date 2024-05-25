@@ -8,7 +8,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var value = TimeSpan.FromMinutes(10);
         var comparableValue = value;
 
-        Guard.Value(value).IsEqual(comparableValue);
+        Guard.Value(value).Equal(comparableValue);
     }
 
     [Fact]
@@ -18,7 +18,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var comparableValue = value + TimeSpan.FromMinutes(1);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(comparableValue));
+            => Guard.Value(value).Equal(comparableValue));
     }
 
     [Fact]
@@ -29,7 +29,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var comparableValue = value + difference;
         var tolerance = TimeSpan.FromSeconds(10);
 
-        Guard.Value(value).IsEqual(comparableValue, tolerance);
+        Guard.Value(value).Equal(comparableValue, tolerance);
     }
 
     [Fact]
@@ -41,7 +41,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var tolerance = TimeSpan.FromSeconds(10);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(comparableValue, tolerance));
+            => Guard.Value(value).Equal(comparableValue, tolerance));
     }
 
     [Fact]
@@ -52,7 +52,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var comparableValue = value + difference;
         var tolerance = TimeSpan.FromSeconds(10);
 
-        Guard.Value(value).IsNotEqual(comparableValue, tolerance);
+        Guard.Value(value).NotEqual(comparableValue, tolerance);
     }
 
     [Fact]
@@ -64,7 +64,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var tolerance = TimeSpan.FromSeconds(10);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsNotEqual(comparableValue, tolerance));
+            => Guard.Value(value).NotEqual(comparableValue, tolerance));
     }
 
     [Fact]
@@ -91,7 +91,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var value = TimeSpan.FromMinutes(10);
         var comparableValue = value - TimeSpan.FromMinutes(2);
 
-        Guard.Value(value).IsGreater(comparableValue);
+        Guard.Value(value).Greater(comparableValue);
     }
 
     [Fact]
@@ -101,7 +101,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var comparableValue = value + TimeSpan.FromMinutes(2);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreater(comparableValue));
+            => Guard.Value(value).Greater(comparableValue));
     }
 
     [Fact]
@@ -110,8 +110,8 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var value = TimeSpan.FromMinutes(10);
         var comparableValue = value - TimeSpan.FromMinutes(2);
 
-        Guard.Value(value).IsGreaterOrEqual(value);
-        Guard.Value(value).IsGreaterOrEqual(comparableValue);
+        Guard.Value(value).GreaterOrEqual(value);
+        Guard.Value(value).GreaterOrEqual(comparableValue);
     }
 
     [Fact]
@@ -121,7 +121,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var comparableValue = value + TimeSpan.FromMinutes(2);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreaterOrEqual(comparableValue));
+            => Guard.Value(value).GreaterOrEqual(comparableValue));
     }
 
     [Fact]
@@ -130,7 +130,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var value = TimeSpan.FromMinutes(10);
         var comparableValue = value + TimeSpan.FromMinutes(2);
 
-        Guard.Value(value).IsLess(comparableValue);
+        Guard.Value(value).Less(comparableValue);
     }
 
     [Fact]
@@ -140,7 +140,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var comparableValue = value - TimeSpan.FromMinutes(2);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLess(comparableValue));
+            => Guard.Value(value).Less(comparableValue));
     }
 
     [Fact]
@@ -149,8 +149,8 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var value = TimeSpan.FromMinutes(10);
         var comparableValue = value + TimeSpan.FromMinutes(2);
 
-        Guard.Value(value).IsLessOrEqual(value);
-        Guard.Value(value).IsLessOrEqual(comparableValue);
+        Guard.Value(value).LessOrEqual(value);
+        Guard.Value(value).LessOrEqual(comparableValue);
     }
 
     [Fact]
@@ -160,7 +160,7 @@ public sealed class GuardValueExtensionsTimeSpanTests
         var comparableValue = value - TimeSpan.FromMinutes(2);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLessOrEqual(comparableValue));
+            => Guard.Value(value).LessOrEqual(comparableValue));
     }
 
     [Theory]

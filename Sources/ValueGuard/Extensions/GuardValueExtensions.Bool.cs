@@ -5,15 +5,15 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<bool> IsEqual(this in GuardValue<bool> guard, bool value)
-        => ref guard.IsEqual<bool, BoolConditions>(value);
+    public static ref readonly GuardValue<bool> Equal(this in GuardValue<bool> guard, bool value)
+        => ref guard.Equal<bool, BoolConditions>(value);
 
-    public static ref readonly GuardValue<bool> IsNotEqual(this in GuardValue<bool> guard, bool value)
-        => ref guard.IsNotEqual<bool, BoolConditions>(value);
+    public static ref readonly GuardValue<bool> NotEqual(this in GuardValue<bool> guard, bool value)
+        => ref guard.NotEqual<bool, BoolConditions>(value);
 
     public static ref readonly GuardValue<bool> IsTrue(this in GuardValue<bool> guard)
-        => ref guard.IsEqual<bool, BoolConditions>(true);
+        => ref guard.Equal<bool, BoolConditions>(true);
 
     public static ref readonly GuardValue<bool> IsFalse(this in GuardValue<bool> guard)
-        => ref guard.IsEqual<bool, BoolConditions>(false);
+        => ref guard.Equal<bool, BoolConditions>(false);
 }

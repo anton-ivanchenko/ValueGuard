@@ -3,7 +3,7 @@ using ValueGuard.Internal.Conditions.Abstractions;
 
 namespace ValueGuard.Internal.Conditions;
 
-internal struct TimeSpanConditions
+internal readonly struct TimeSpanConditions
     : IHaveDefaultCondition<TimeSpan>
     , IHaveEqualCondition<TimeSpan>
     , IHaveEqualWithToleranceCondition<TimeSpan, TimeSpan>

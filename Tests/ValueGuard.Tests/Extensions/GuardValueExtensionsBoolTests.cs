@@ -6,27 +6,27 @@ public sealed class GuardValueExtensionsBoolTests
     [InlineData(true, true)]
     [InlineData(false, false)]
     public void IsEqual_Equal_NoException(bool value, bool expected)
-        => Guard.Value(value).IsEqual(expected);
+        => Guard.Value(value).Equal(expected);
 
     [Theory]
     [InlineData(true, false)]
     [InlineData(false, true)]
     public void IsEqual_NotEqual_ThrowException(bool value, bool expected)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(expected));
+            => Guard.Value(value).Equal(expected));
 
     [Theory]
     [InlineData(true, false)]
     [InlineData(false, true)]
     public void IsNotEqual_NotEqual_NoException(bool value, bool expected)
-        => Guard.Value(value).IsNotEqual(expected);
+        => Guard.Value(value).NotEqual(expected);
 
     [Theory]
     [InlineData(true, true)]
     [InlineData(false, false)]
     public void IsNotEqual_Equal_ThrowException(bool value, bool expected)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsNotEqual(expected));
+            => Guard.Value(value).NotEqual(expected));
 
     [Fact]
     public void IsTrue_True_NoException()
