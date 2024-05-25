@@ -3,8 +3,6 @@ using ValueGuard.Internal.Conditions;
 
 namespace ValueGuard;
 
-// TODO: Perhaps more methods need to be implemented for this type
-
 public static partial class GuardValueExtensions
 {
     public static ref readonly GuardValue<char> Equal(this in GuardValue<char> guard, char value)

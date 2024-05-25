@@ -3,8 +3,6 @@ using ValueGuard.Internal.Conditions.Abstractions;
 
 namespace ValueGuard.Internal.Conditions.Numbers;
 
-// TODO: Perhaps a tolerance parameter is needed for all comparison methods
-
 internal readonly struct DecimalConditions
     : IHaveDefaultCondition<decimal>
     , IHaveEqualWithToleranceCondition<decimal, decimal>
@@ -12,6 +10,9 @@ internal readonly struct DecimalConditions
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsDefault(decimal value) => value == 0M;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public bool IsValidTolerance(decimal tolerance) => tolerance >= 0M;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsEqual(decimal left, decimal right, decimal tolerance)

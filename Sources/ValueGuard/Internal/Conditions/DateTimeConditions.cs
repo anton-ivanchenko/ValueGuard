@@ -16,6 +16,9 @@ internal readonly struct DateTimeConditions
     public bool IsEqual(DateTime left, DateTime right) => left == right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public bool IsValidTolerance(TimeSpan tolerance) => tolerance >= TimeSpan.Zero;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsEqual(DateTime left, DateTime right, TimeSpan tolerance)
         => (left > right ? left - right : right - left) < tolerance;
 

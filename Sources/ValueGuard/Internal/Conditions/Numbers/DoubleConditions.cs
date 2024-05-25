@@ -3,8 +3,6 @@ using ValueGuard.Internal.Conditions.Abstractions;
 
 namespace ValueGuard.Internal.Conditions.Numbers;
 
-// TODO: Perhaps a tolerance parameter is needed for all comparison methods
-
 internal readonly struct DoubleConditions
     : IHaveDefaultCondition<double>
     , IHaveEqualWithToleranceCondition<double, double>
@@ -12,6 +10,9 @@ internal readonly struct DoubleConditions
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsDefault(double value) => value == 0D;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public bool IsValidTolerance(double tolerance) => tolerance >= 0D;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsEqual(double left, double right, double tolerance)

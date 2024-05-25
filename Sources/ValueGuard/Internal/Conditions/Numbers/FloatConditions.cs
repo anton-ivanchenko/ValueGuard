@@ -3,8 +3,6 @@ using ValueGuard.Internal.Conditions.Abstractions;
 
 namespace ValueGuard.Internal.Conditions.Numbers;
 
-// TODO: Perhaps a tolerance parameter is needed for all comparison methods
-
 internal readonly struct FloatConditions
     : IHaveDefaultCondition<float>
     , IHaveEqualWithToleranceCondition<float, float>
@@ -12,6 +10,9 @@ internal readonly struct FloatConditions
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsDefault(float value) => value == 0F;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public bool IsValidTolerance(float tolerance) => tolerance >= 0F;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsEqual(float left, float right, float tolerance)

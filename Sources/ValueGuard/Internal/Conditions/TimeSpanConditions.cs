@@ -16,6 +16,9 @@ internal readonly struct TimeSpanConditions
     public bool IsEqual(TimeSpan left, TimeSpan right) => left == right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public bool IsValidTolerance(TimeSpan tolerance) => tolerance >= TimeSpan.Zero;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool IsEqual(TimeSpan left, TimeSpan right, TimeSpan tolerance)
         => (left > right ? left - right : right - left) < tolerance;
 

@@ -13,8 +13,7 @@ internal static partial class InternalGuardValueExtensions
     {
         if (!comparer.Equals(guard.Value, value))
         {
-            // TODO: Change error message, because of the comparator, the message may not be correct
-            guard.ThrowException($"The value must be '{value}'");
+            guard.ThrowException($"The value must be equal '{value}' with {comparer.GetType()} comparer");
         }
 
         return ref guard;
@@ -39,7 +38,10 @@ internal static partial class InternalGuardValueExtensions
         TTolerance tolerance)
         where TCondition : struct, IHaveEqualWithToleranceCondition<TValue, TTolerance>
     {
-        // TODO: The "tolerance" value must also be validated
+        if (!default(TCondition).IsValidTolerance(tolerance))
+        {
+            throw new ArgumentOutOfRangeException(nameof(tolerance), tolerance, "Incorrect tolerance value");
+        }
 
         if (!default(TCondition).IsEqual(guard.Value, value, tolerance))
         {
@@ -57,8 +59,7 @@ internal static partial class InternalGuardValueExtensions
     {
         if (comparer.Equals(guard.Value, value))
         {
-            // TODO: Change error message, because of the comparator, the message may not be correct
-            guard.ThrowException($"The value cannot be '{value}'");
+            guard.ThrowException($"The value must be equal '{value}' with {comparer.GetType()} comparer");
         }
 
         return ref guard;
@@ -82,7 +83,10 @@ internal static partial class InternalGuardValueExtensions
         TTolerance tolerance)
         where TCondition : struct, IHaveEqualWithToleranceCondition<TValue, TTolerance>
     {
-        // TODO: The "tolerance" value must also be validated
+        if (!default(TCondition).IsValidTolerance(tolerance))
+        {
+            throw new ArgumentOutOfRangeException(nameof(tolerance), tolerance, "Incorrect tolerance value");
+        }
 
         if (default(TCondition).IsEqual(guard.Value, value, tolerance))
         {
