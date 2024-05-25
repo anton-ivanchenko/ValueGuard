@@ -7,17 +7,17 @@ public static partial class GuardValueExtensions
 {
     private const double _defaultDoubleTolerance = 1e-12;
 
-    public static ref readonly GuardValue<double> IsEqual(
+    public static ref readonly GuardValue<double> Equal(
         this in GuardValue<double> guard,
         double value,
         double tolerance = _defaultDoubleTolerance)
-        => ref guard.IsEqual<double, double, DoubleConditions>(value, tolerance);
+        => ref guard.Equal<double, double, DoubleConditions>(value, tolerance);
 
-    public static ref readonly GuardValue<double> IsNotEqual(
+    public static ref readonly GuardValue<double> NotEqual(
         this in GuardValue<double> guard,
         double value,
         double tolerance = _defaultDoubleTolerance)
-        => ref guard.IsNotEqual<double, double, DoubleConditions>(value, tolerance);
+        => ref guard.NotEqual<double, double, DoubleConditions>(value, tolerance);
 
     public static ref readonly GuardValue<double> IsDefault(this in GuardValue<double> guard)
         => ref guard.IsDefault<double, DoubleConditions>();
@@ -26,22 +26,22 @@ public static partial class GuardValueExtensions
         => ref guard.IsNotDefault<double, DoubleConditions>();
 
     public static ref readonly GuardValue<double> IsPositive(this in GuardValue<double> guard)
-        => ref guard.IsGreater<double, DoubleConditions>(default);
+        => ref guard.Greater<double, DoubleConditions>(default);
 
     public static ref readonly GuardValue<double> IsNegative(this in GuardValue<double> guard)
-        => ref guard.IsLess<double, DoubleConditions>(default);
+        => ref guard.Less<double, DoubleConditions>(default);
 
-    public static ref readonly GuardValue<double> IsGreater(this in GuardValue<double> guard, double value)
-        => ref guard.IsGreater<double, DoubleConditions>(value);
+    public static ref readonly GuardValue<double> Greater(this in GuardValue<double> guard, double value)
+        => ref guard.Greater<double, DoubleConditions>(value);
 
-    public static ref readonly GuardValue<double> IsGreaterOrEqual(this in GuardValue<double> guard, double value)
-        => ref guard.IsGreaterOrEqual<double, DoubleConditions>(value);
+    public static ref readonly GuardValue<double> GreaterOrEqual(this in GuardValue<double> guard, double value)
+        => ref guard.GreaterOrEqual<double, DoubleConditions>(value);
 
-    public static ref readonly GuardValue<double> IsLess(this in GuardValue<double> guard, double value)
-        => ref guard.IsLess<double, DoubleConditions>(value);
+    public static ref readonly GuardValue<double> Less(this in GuardValue<double> guard, double value)
+        => ref guard.Less<double, DoubleConditions>(value);
 
-    public static ref readonly GuardValue<double> IsLessOrEqual(this in GuardValue<double> guard, double value)
-        => ref guard.IsLessOrEqual<double, DoubleConditions>(value);
+    public static ref readonly GuardValue<double> LessOrEqual(this in GuardValue<double> guard, double value)
+        => ref guard.LessOrEqual<double, DoubleConditions>(value);
 
     public static ref readonly GuardValue<double> InRange(
         this in GuardValue<double> guard,

@@ -3,7 +3,7 @@ using ValueGuard.Internal.Conditions.Abstractions;
 
 namespace ValueGuard.Internal.Conditions;
 
-public struct GuidConditions
+public readonly struct GuidConditions
     : IHaveDefaultCondition<Guid>
     , IHaveEqualCondition<Guid>
     , IHaveRangeCondition<Guid>

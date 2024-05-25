@@ -8,7 +8,7 @@ public sealed class GuardValueExtensionsGuidTests
         var value = Guid.NewGuid();
         var comparableValue = value;
 
-        Guard.Value(value).IsEqual(comparableValue);
+        Guard.Value(value).Equal(comparableValue);
     }
 
     [Fact]
@@ -18,7 +18,7 @@ public sealed class GuardValueExtensionsGuidTests
         var comparableValue = Guid.NewGuid();
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(comparableValue));
+            => Guard.Value(value).Equal(comparableValue));
     }
 
     [Fact]
@@ -27,7 +27,7 @@ public sealed class GuardValueExtensionsGuidTests
         var value = Guid.NewGuid();
         var comparableValue = Guid.NewGuid();
 
-        Guard.Value(value).IsNotEqual(comparableValue);
+        Guard.Value(value).NotEqual(comparableValue);
     }
 
     [Fact]
@@ -37,7 +37,7 @@ public sealed class GuardValueExtensionsGuidTests
         var comparableValue = value;
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsNotEqual(comparableValue));
+            => Guard.Value(value).NotEqual(comparableValue));
     }
 
     [Fact]
@@ -78,7 +78,7 @@ public sealed class GuardValueExtensionsGuidTests
         var value = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c8");
         var comparableValue = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c7");
 
-        Guard.Value(value).IsGreater(comparableValue);
+        Guard.Value(value).Greater(comparableValue);
     }
 
     [Fact]
@@ -88,7 +88,7 @@ public sealed class GuardValueExtensionsGuidTests
         var comparableValue = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c9");
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreater(comparableValue));
+            => Guard.Value(value).Greater(comparableValue));
     }
 
     [Fact]
@@ -97,8 +97,8 @@ public sealed class GuardValueExtensionsGuidTests
         var value = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c8");
         var comparableValue = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c7");
 
-        Guard.Value(value).IsGreaterOrEqual(value);
-        Guard.Value(value).IsGreaterOrEqual(comparableValue);
+        Guard.Value(value).GreaterOrEqual(value);
+        Guard.Value(value).GreaterOrEqual(comparableValue);
     }
 
     [Fact]
@@ -108,7 +108,7 @@ public sealed class GuardValueExtensionsGuidTests
         var comparableValue = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c9");
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreaterOrEqual(comparableValue));
+            => Guard.Value(value).GreaterOrEqual(comparableValue));
     }
 
     [Fact]
@@ -117,7 +117,7 @@ public sealed class GuardValueExtensionsGuidTests
         var value = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c8");
         var comparableValue = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c9");
 
-        Guard.Value(value).IsLess(comparableValue);
+        Guard.Value(value).Less(comparableValue);
     }
 
     [Fact]
@@ -127,7 +127,7 @@ public sealed class GuardValueExtensionsGuidTests
         var comparableValue = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c7");
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLess(comparableValue));
+            => Guard.Value(value).Less(comparableValue));
     }
 
     [Fact]
@@ -136,7 +136,7 @@ public sealed class GuardValueExtensionsGuidTests
         var value = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c8");
         var comparableValue = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c9");
 
-        Guard.Value(value).IsLessOrEqual(comparableValue);
+        Guard.Value(value).LessOrEqual(comparableValue);
     }
 
     [Fact]
@@ -146,7 +146,7 @@ public sealed class GuardValueExtensionsGuidTests
         var comparableValue = Guid.Parse("f4147d65-4816-4f1c-a30c-7f9f643026c7");
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLessOrEqual(comparableValue));
+            => Guard.Value(value).LessOrEqual(comparableValue));
     }
 
     [Theory]

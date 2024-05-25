@@ -6,7 +6,7 @@ namespace ValueGuard.Internal;
 internal static partial class InternalGuardValueExtensions
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsGreater<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value)
+    public static ref readonly GuardValue<TValue> Greater<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value)
         where TCondition : struct, IHaveRangeCondition<TValue>
     {
         if (default(TCondition).IsLessOrEqual(guard.Value, value))
@@ -18,7 +18,7 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsGreaterOrEqual<TValue, TCondition>(
+    public static ref readonly GuardValue<TValue> GreaterOrEqual<TValue, TCondition>(
         this in GuardValue<TValue> guard,
         TValue value)
         where TCondition : struct, IHaveRangeCondition<TValue>
@@ -32,7 +32,7 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsLess<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value)
+    public static ref readonly GuardValue<TValue> Less<TValue, TCondition>(this in GuardValue<TValue> guard, TValue value)
         where TCondition : struct, IHaveRangeCondition<TValue>
     {
         if (default(TCondition).IsGreaterOrEqual(guard.Value, value))
@@ -44,7 +44,7 @@ internal static partial class InternalGuardValueExtensions
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsLessOrEqual<TValue, TCondition>(
+    public static ref readonly GuardValue<TValue> LessOrEqual<TValue, TCondition>(
         this in GuardValue<TValue> guard,
         TValue value)
         where TCondition : struct, IHaveRangeCondition<TValue>

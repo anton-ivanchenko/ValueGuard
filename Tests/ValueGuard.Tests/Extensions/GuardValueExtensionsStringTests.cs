@@ -6,39 +6,39 @@ public sealed class GuardValueExtensionsStringTests
 {
     [Fact]
     public void IsEqual_EqualString_NoException()
-        => Guard.Value("text").IsEqual("text");
+        => Guard.Value("text").Equal("text");
 
     [Fact]
     public void IsEqual_NotEqualString_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value("text").IsEqual("value"));
+            => Guard.Value("text").Equal("value"));
 
     [Fact]
     public void IsNotEqual_NotEqualString_NoException()
-        => Guard.Value("text").IsNotEqual("value");
+        => Guard.Value("text").NotEqual("value");
 
     [Fact]
     public void IsNotEqual_EqualString_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value("text").IsNotEqual("text"));
+            => Guard.Value("text").NotEqual("text"));
 
     [Fact]
     public void IsEqual_EqualUppercaseStringWithOrdinalIgnoreCaseComparer_NoException()
-        => Guard.Value("text").IsEqual("TEXT", StringComparer.OrdinalIgnoreCase);
+        => Guard.Value("text").Equal("TEXT", StringComparer.OrdinalIgnoreCase);
 
     [Fact]
     public void IsEqual_NotEqualUppercaseStringWithOrdinalIgnoreCaseComparer_NoException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value("text").IsEqual("VALUE", StringComparer.OrdinalIgnoreCase));
+            => Guard.Value("text").Equal("VALUE", StringComparer.OrdinalIgnoreCase));
 
     [Fact]
     public void IsNotEqual_NotEqualUppercaseStringWithOrdinalIgnoreCaseComparer_NoException()
-        => Guard.Value("text").IsNotEqual("VALUE", StringComparer.OrdinalIgnoreCase);
+        => Guard.Value("text").NotEqual("VALUE", StringComparer.OrdinalIgnoreCase);
 
     [Fact]
     public void IsNotEqual_EqualUppercaseStringWithOrdinalIgnoreCaseComparer_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value("text").IsNotEqual("TEXT", StringComparer.OrdinalIgnoreCase));
+            => Guard.Value("text").NotEqual("TEXT", StringComparer.OrdinalIgnoreCase));
 
     [Fact]
     public void IsEmpty_EmptyString_NoException()

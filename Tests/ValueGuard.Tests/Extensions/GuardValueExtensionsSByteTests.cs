@@ -5,24 +5,24 @@ public sealed class GuardValueExtensionsSByteTests
     [Theory]
     [InlineData(10, 10)]
     public void IsEqual_Equals_NoException(sbyte value, sbyte comparableValue)
-        => Guard.Value(value).IsEqual(comparableValue);
+        => Guard.Value(value).Equal(comparableValue);
 
     [Theory]
     [InlineData(10, 20)]
     public void IsEqual_NoEquals_ThrowException(sbyte value, sbyte comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(comparableValue));
+            => Guard.Value(value).Equal(comparableValue));
 
     [Theory]
     [InlineData(0, 2)]
     public void IsNotEqual_NotEquals_NoException(sbyte value, sbyte comparableValue)
-        => Guard.Value(value).IsNotEqual(comparableValue);
+        => Guard.Value(value).NotEqual(comparableValue);
 
     [Theory]
     [InlineData(0, 0)]
     public void IsNotEqual_Equals_ThrowException(sbyte value, sbyte comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsNotEqual(comparableValue));
+            => Guard.Value(value).NotEqual(comparableValue));
 
     [Theory]
     [InlineData(default(sbyte))]
@@ -75,50 +75,50 @@ public sealed class GuardValueExtensionsSByteTests
     [Theory]
     [InlineData(5, 0)]
     public void IsGreater_GreaterThanValue_NoException(sbyte value, sbyte comparableValue)
-        => Guard.Value(value).IsGreater(comparableValue);
+        => Guard.Value(value).Greater(comparableValue);
 
     [Theory]
     [InlineData(0, 5)]
     [InlineData(5, 5)]
     public void IsGreater_LessOrEqualThanValue_ThrowException(sbyte value, sbyte comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreater(comparableValue));
+            => Guard.Value(value).Greater(comparableValue));
 
     [Theory]
     [InlineData(5, 0)]
     [InlineData(5, 5)]
     public void IsGreaterOrEqual_GreaterOrEqualThanValue_NoException(sbyte value, sbyte comparableValue)
-        => Guard.Value(value).IsGreaterOrEqual(comparableValue);
+        => Guard.Value(value).GreaterOrEqual(comparableValue);
 
     [Theory]
     [InlineData(0, 5)]
     public void IsGreaterOrEqual_LessThanValue_ThrowException(sbyte value, sbyte comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreaterOrEqual(comparableValue));
+            => Guard.Value(value).GreaterOrEqual(comparableValue));
 
     [Theory]
     [InlineData(0, 5)]
     public void IsLess_LessThanValue_NoException(sbyte value, sbyte comparableValue)
-        => Guard.Value(value).IsLess(comparableValue);
+        => Guard.Value(value).Less(comparableValue);
 
     [Theory]
     [InlineData(5, 0)]
     [InlineData(5, 5)]
     public void IsLess_GreaterOrEqualThanValue_ThrowException(sbyte value, sbyte comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLess(comparableValue));
+            => Guard.Value(value).Less(comparableValue));
 
     [Theory]
     [InlineData(2, 5)]
     [InlineData(5, 5)]
     public void IsLessOrEqual_LessOrEqualThanNumber_NoException(sbyte value, sbyte comparableValue)
-        => Guard.Value(value).IsLessOrEqual(comparableValue);
+        => Guard.Value(value).LessOrEqual(comparableValue);
 
     [Theory]
     [InlineData(8, 5)]
     public void IsLessOrEqual_GreaterThanNumber_ThrowException(sbyte value, sbyte comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLessOrEqual(comparableValue));
+            => Guard.Value(value).LessOrEqual(comparableValue));
 
     [Theory]
     [InlineData(0, 0, 10, false, false)]

@@ -5,19 +5,19 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    private const decimal DefaultDecimalTolerance = 1e-12M;
+    private const decimal _defaultDecimalTolerance = 1e-12M;
 
-    public static ref readonly GuardValue<decimal> IsEqual(
+    public static ref readonly GuardValue<decimal> Equal(
         this in GuardValue<decimal> guard,
         decimal value,
-        decimal tolerance = DefaultDecimalTolerance)
-        => ref guard.IsEqual<decimal, decimal, DecimalConditions>(value, tolerance);
+        decimal tolerance = _defaultDecimalTolerance)
+        => ref guard.Equal<decimal, decimal, DecimalConditions>(value, tolerance);
 
-    public static ref readonly GuardValue<decimal> IsNotEqual(
+    public static ref readonly GuardValue<decimal> NotEqual(
         this in GuardValue<decimal> guard,
         decimal value,
-        decimal tolerance = DefaultDecimalTolerance)
-        => ref guard.IsNotEqual<decimal, decimal, DecimalConditions>(value, tolerance);
+        decimal tolerance = _defaultDecimalTolerance)
+        => ref guard.NotEqual<decimal, decimal, DecimalConditions>(value, tolerance);
 
     public static ref readonly GuardValue<decimal> IsDefault(this in GuardValue<decimal> guard)
         => ref guard.IsDefault<decimal, DecimalConditions>();
@@ -26,22 +26,22 @@ public static partial class GuardValueExtensions
         => ref guard.IsNotDefault<decimal, DecimalConditions>();
 
     public static ref readonly GuardValue<decimal> IsPositive(this in GuardValue<decimal> guard)
-        => ref guard.IsGreater<decimal, DecimalConditions>(default);
+        => ref guard.Greater<decimal, DecimalConditions>(default);
 
     public static ref readonly GuardValue<decimal> IsNegative(this in GuardValue<decimal> guard)
-        => ref guard.IsLess<decimal, DecimalConditions>(default);
+        => ref guard.Less<decimal, DecimalConditions>(default);
 
-    public static ref readonly GuardValue<decimal> IsGreater(this in GuardValue<decimal> guard, decimal value)
-        => ref guard.IsGreater<decimal, DecimalConditions>(value);
+    public static ref readonly GuardValue<decimal> Greater(this in GuardValue<decimal> guard, decimal value)
+        => ref guard.Greater<decimal, DecimalConditions>(value);
 
-    public static ref readonly GuardValue<decimal> IsGreaterOrEqual(this in GuardValue<decimal> guard, decimal value)
-        => ref guard.IsGreaterOrEqual<decimal, DecimalConditions>(value);
+    public static ref readonly GuardValue<decimal> GreaterOrEqual(this in GuardValue<decimal> guard, decimal value)
+        => ref guard.GreaterOrEqual<decimal, DecimalConditions>(value);
 
-    public static ref readonly GuardValue<decimal> IsLess(this in GuardValue<decimal> guard, decimal value)
-        => ref guard.IsLess<decimal, DecimalConditions>(value);
+    public static ref readonly GuardValue<decimal> Less(this in GuardValue<decimal> guard, decimal value)
+        => ref guard.Less<decimal, DecimalConditions>(value);
 
-    public static ref readonly GuardValue<decimal> IsLessOrEqual(this in GuardValue<decimal> guard, decimal value)
-        => ref guard.IsLessOrEqual<decimal, DecimalConditions>(value);
+    public static ref readonly GuardValue<decimal> LessOrEqual(this in GuardValue<decimal> guard, decimal value)
+        => ref guard.LessOrEqual<decimal, DecimalConditions>(value);
 
     public static ref readonly GuardValue<decimal> InRange(
         this in GuardValue<decimal> guard,
