@@ -7,17 +7,17 @@ public static partial class GuardValueExtensions
 {
     private const decimal _defaultDecimalTolerance = 1e-12M;
 
-    public static ref readonly GuardValue<decimal> IsEqual(
+    public static ref readonly GuardValue<decimal> EqualTo(
         this in GuardValue<decimal> guard,
         decimal value,
         decimal tolerance = _defaultDecimalTolerance)
-        => ref GenericImplementation.IsEqual<decimal, decimal, DecimalPredicates>(guard, value, tolerance);
+        => ref GenericImplementation.EqualTo<decimal, decimal, DecimalPredicates>(guard, value, tolerance);
 
-    public static ref readonly GuardValue<decimal> NotEqual(
+    public static ref readonly GuardValue<decimal> NotEqualTo(
         this in GuardValue<decimal> guard,
         decimal value,
         decimal tolerance = _defaultDecimalTolerance)
-        => ref GenericImplementation.NotEqual<decimal, decimal, DecimalPredicates>(guard, value, tolerance);
+        => ref GenericImplementation.NotEqualTo<decimal, decimal, DecimalPredicates>(guard, value, tolerance);
 
     public static ref readonly GuardValue<decimal> IsDefault(this in GuardValue<decimal> guard)
         => ref GenericImplementation.IsDefault<decimal, DecimalPredicates>(guard);
@@ -26,28 +26,28 @@ public static partial class GuardValueExtensions
         => ref GenericImplementation.NotDefault<decimal, DecimalPredicates>(guard);
 
     public static ref readonly GuardValue<decimal> IsPositive(this in GuardValue<decimal> guard)
-        => ref GenericImplementation.IsGreater<decimal, DecimalPredicates>(guard, default);
+        => ref GenericImplementation.GreaterThan<decimal, DecimalPredicates>(guard, default);
 
     public static ref readonly GuardValue<decimal> IsNegative(this in GuardValue<decimal> guard)
-        => ref GenericImplementation.IsLess<decimal, DecimalPredicates>(guard, default);
+        => ref GenericImplementation.LessThan<decimal, DecimalPredicates>(guard, default);
 
-    public static ref readonly GuardValue<decimal> IsGreater(this in GuardValue<decimal> guard, decimal value)
-        => ref GenericImplementation.IsGreater<decimal, DecimalPredicates>(guard, value);
+    public static ref readonly GuardValue<decimal> GreaterThan(this in GuardValue<decimal> guard, decimal value)
+        => ref GenericImplementation.GreaterThan<decimal, DecimalPredicates>(guard, value);
 
-    public static ref readonly GuardValue<decimal> IsGreaterOrEqual(this in GuardValue<decimal> guard, decimal value)
-        => ref GenericImplementation.IsGreaterOrEqual<decimal, DecimalPredicates>(guard, value);
+    public static ref readonly GuardValue<decimal> GreaterThanOrEqualTo(this in GuardValue<decimal> guard, decimal value)
+        => ref GenericImplementation.GreaterThanOrEqualTo<decimal, DecimalPredicates>(guard, value);
 
-    public static ref readonly GuardValue<decimal> IsLess(this in GuardValue<decimal> guard, decimal value)
-        => ref GenericImplementation.IsLess<decimal, DecimalPredicates>(guard, value);
+    public static ref readonly GuardValue<decimal> LessThan(this in GuardValue<decimal> guard, decimal value)
+        => ref GenericImplementation.LessThan<decimal, DecimalPredicates>(guard, value);
 
-    public static ref readonly GuardValue<decimal> IsLessOrEqual(this in GuardValue<decimal> guard, decimal value)
-        => ref GenericImplementation.IsLessOrEqual<decimal, DecimalPredicates>(guard, value);
+    public static ref readonly GuardValue<decimal> LessThanOrEqualTo(this in GuardValue<decimal> guard, decimal value)
+        => ref GenericImplementation.LessThanOrEqualTo<decimal, DecimalPredicates>(guard, value);
 
-    public static ref readonly GuardValue<decimal> InRange(
+    public static ref readonly GuardValue<decimal> Between(
         this in GuardValue<decimal> guard,
         decimal min,
         decimal max,
         bool excludeMin = false,
         bool excludeMax = false)
-        => ref GenericImplementation.InRange<decimal, DecimalPredicates>(guard, min, max, excludeMin, excludeMax);
+        => ref GenericImplementation.Between<decimal, DecimalPredicates>(guard, min, max, excludeMin, excludeMax);
 }

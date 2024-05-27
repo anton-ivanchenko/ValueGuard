@@ -5,40 +5,40 @@ namespace ValueGuard.Tests.Text;
 public sealed class GuardValueExtensionsStringTests
 {
     [Fact]
-    public void IsEqual_EqualValue_NoException()
-        => Guard.Value("text").IsEqual("text");
+    public void EqualTo_EqualValue_NoException()
+        => Guard.Value("text").EqualTo("text");
 
     [Fact]
-    public void IsEqual_NotEqualValue_ThrowException()
+    public void EqualTo_NotEqualValue_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value("text").IsEqual("value"));
+            => Guard.Value("text").EqualTo("value"));
 
     [Fact]
-    public void NotEqual_NotEqualValue_NoException()
-        => Guard.Value("text").NotEqual("value");
+    public void NotEqualTo_NotEqualValue_NoException()
+        => Guard.Value("text").NotEqualTo("value");
 
     [Fact]
-    public void NotEqual_EqualValue_ThrowException()
+    public void NotEqualTo_EqualValue_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value("text").NotEqual("text"));
+            => Guard.Value("text").NotEqualTo("text"));
 
     [Fact]
-    public void IsEqual_EqualUppercaseValueWithOrdinalIgnoreCaseComparer_NoException()
-        => Guard.Value("text").IsEqual("TEXT", StringComparer.OrdinalIgnoreCase);
+    public void EqualTo_EqualUppercaseValueWithOrdinalIgnoreCaseComparer_NoException()
+        => Guard.Value("text").EqualTo("TEXT", StringComparer.OrdinalIgnoreCase);
 
     [Fact]
-    public void IsEqual_NotEqualUppercaseValueWithOrdinalIgnoreCaseComparer_NoException()
+    public void EqualTo_NotEqualUppercaseValueWithOrdinalIgnoreCaseComparer_NoException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value("text").IsEqual("VALUE", StringComparer.OrdinalIgnoreCase));
+            => Guard.Value("text").EqualTo("VALUE", StringComparer.OrdinalIgnoreCase));
 
     [Fact]
-    public void NotEqual_NotEqualUppercaseValueWithOrdinalIgnoreCaseComparer_NoException()
-        => Guard.Value("text").NotEqual("VALUE", StringComparer.OrdinalIgnoreCase);
+    public void NotEqualTo_NotEqualUppercaseValueWithOrdinalIgnoreCaseComparer_NoException()
+        => Guard.Value("text").NotEqualTo("VALUE", StringComparer.OrdinalIgnoreCase);
 
     [Fact]
-    public void NotEqual_EqualUppercaseValueWithOrdinalIgnoreCaseComparer_ThrowException()
+    public void NotEqualTo_EqualUppercaseValueWithOrdinalIgnoreCaseComparer_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value("text").NotEqual("TEXT", StringComparer.OrdinalIgnoreCase));
+            => Guard.Value("text").NotEqualTo("TEXT", StringComparer.OrdinalIgnoreCase));
 
     [Fact]
     public void IsEmpty_EmptyValue_NoException()
@@ -114,16 +114,16 @@ public sealed class GuardValueExtensionsStringTests
             => Guard.Value("value").HasExactLength(6));
 
     [Fact]
-    public void HasLengthInRange_InRangeValue_NoException()
+    public void HasLengthBetween_InRangeValue_NoException()
         => Guard.Value("value").HasLengthInRange(0, 10);
 
     [Fact]
-    public void HasLengthInRange_GreaterThanRangeValue_NoException()
+    public void HasLengthBetween_GreaterThanRangeValue_NoException()
         => Assert.Throws<GuardException>(()
             => Guard.Value("value").HasLengthInRange(0, 4));
 
     [Fact]
-    public void HasLengthInRange_LessThenRangeValue_NoException()
+    public void HasLengthBetween_LessThenRangeValue_NoException()
         => Assert.Throws<GuardException>(()
             => Guard.Value("value").HasLengthInRange(10, 20));
 

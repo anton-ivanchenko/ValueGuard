@@ -3,23 +3,23 @@ namespace ValueGuard.Tests.Common;
 public sealed class GuardValueExtensionsTests
 {
     [Fact]
-    public void Is_TruePredicate_NoException()
-        => Guard.Value(1).Is(i => i > 0);
+    public void Must_TruePredicate_NoException()
+        => Guard.Value(1).Must(i => i > 0);
 
     [Fact]
-    public void Is_FalsePredicate_ThrowException()
+    public void Must_FalsePredicate_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value(1).Is(i => i < 0));
+            => Guard.Value(1).Must(i => i < 0));
 
     [Fact]
-    public void Is_TruePredicate_Message_NoException()
+    public void Must_TruePredicate_Message_NoException()
         => Guard.Value(1)
-            .Is(i => i > 0, "Value cannot be less or equal zero");
+            .Must(i => i > 0, "Value cannot be less or equal zero");
 
     [Fact]
-    public void Is_FalsePredicate_Message_ThrowException()
+    public void Must_FalsePredicate_Message_ThrowException()
         => Assert.Throws<GuardException>(()
-            => Guard.Value(1).Is(i => i < 0, "Value must be less zero"));
+            => Guard.Value(1).Must(i => i < 0, "Value must be less zero"));
 
     [Fact]
     public void GetValue_ReturnOriginalValue()
