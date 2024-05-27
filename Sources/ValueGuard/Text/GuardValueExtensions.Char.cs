@@ -5,11 +5,11 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<char> IsEqual(this in GuardValue<char> guard, char value)
-        => ref GenericImplementation.IsEqual<char, CharPredicates>(guard, value);
+    public static ref readonly GuardValue<char> EqualTo(this in GuardValue<char> guard, char value)
+        => ref GenericImplementation.EqualTo<char, CharPredicates>(guard, value);
 
-    public static ref readonly GuardValue<char> NotEqual(this in GuardValue<char> guard, char value)
-        => ref GenericImplementation.NotEqual<char, CharPredicates>(guard, value);
+    public static ref readonly GuardValue<char> NotEqualTo(this in GuardValue<char> guard, char value)
+        => ref GenericImplementation.NotEqualTo<char, CharPredicates>(guard, value);
 
     public static ref readonly GuardValue<char> IsDigit(this in GuardValue<char> guard)
     {

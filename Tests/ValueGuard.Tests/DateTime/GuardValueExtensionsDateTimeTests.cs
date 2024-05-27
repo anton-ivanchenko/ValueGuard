@@ -3,37 +3,37 @@ namespace ValueGuard.Tests.DateTime;
 public sealed class GuardValueExtensionsDateTimeTests
 {
     [Fact]
-    public void IsEqual_EqualValue_NoException()
+    public void EqualTo_EqualValue_NoException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value;
 
-        Guard.Value(value).IsEqual(comparableValue);
+        Guard.Value(value).EqualTo(comparableValue);
     }
 
     [Fact]
-    public void IsEqual_NotEqualValue_ThrowException()
+    public void EqualTo_NotEqualValue_ThrowException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value.AddMilliseconds(1);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(comparableValue));
+            => Guard.Value(value).EqualTo(comparableValue));
     }
 
     [Fact]
-    public void IsEqual_DifferenceLessSpecificToleranceValue_NoException()
+    public void EqualTo_DifferenceLessSpecificToleranceValue_NoException()
     {
         var value = System.DateTime.UtcNow;
         var difference = TimeSpan.FromSeconds(9);
         var comparableValue = value + difference;
         var tolerance = TimeSpan.FromSeconds(10);
 
-        Guard.Value(value).IsEqual(comparableValue, tolerance);
+        Guard.Value(value).EqualTo(comparableValue, tolerance);
     }
 
     [Fact]
-    public void IsEqual_DifferenceGreaterSpecificToleranceValue_ThrowException()
+    public void EqualTo_DifferenceGreaterSpecificToleranceValue_ThrowException()
     {
         var value = System.DateTime.UtcNow;
         var difference = TimeSpan.FromSeconds(12);
@@ -41,22 +41,22 @@ public sealed class GuardValueExtensionsDateTimeTests
         var tolerance = TimeSpan.FromSeconds(10);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(comparableValue, tolerance));
+            => Guard.Value(value).EqualTo(comparableValue, tolerance));
     }
 
     [Fact]
-    public void NotEqual_DifferenceGreaterSpecificToleranceValue_NoException()
+    public void NotEqualTo_DifferenceGreaterSpecificToleranceValue_NoException()
     {
         var value = System.DateTime.UtcNow;
         var difference = TimeSpan.FromSeconds(12);
         var comparableValue = value + difference;
         var tolerance = TimeSpan.FromSeconds(10);
 
-        Guard.Value(value).NotEqual(comparableValue, tolerance);
+        Guard.Value(value).NotEqualTo(comparableValue, tolerance);
     }
 
     [Fact]
-    public void NotEqual_DifferenceLessSpecificToleranceValue_ThrowException()
+    public void NotEqualTo_DifferenceLessSpecificToleranceValue_ThrowException()
     {
         var value = System.DateTime.UtcNow;
         var difference = TimeSpan.FromSeconds(5);
@@ -64,7 +64,7 @@ public sealed class GuardValueExtensionsDateTimeTests
         var tolerance = TimeSpan.FromSeconds(10);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).NotEqual(comparableValue, tolerance));
+            => Guard.Value(value).NotEqualTo(comparableValue, tolerance));
     }
 
     [Fact]
@@ -86,81 +86,81 @@ public sealed class GuardValueExtensionsDateTimeTests
             => Guard.Value(default(System.DateTime)).NotDefault());
 
     [Fact]
-    public void IsGreater_GreaterValue_NoException()
+    public void GreaterThan_GreaterValue_NoException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value.AddMilliseconds(-2);
 
-        Guard.Value(value).IsGreater(comparableValue);
+        Guard.Value(value).GreaterThan(comparableValue);
     }
 
     [Fact]
-    public void IsGreater_LessValue_ThrowException()
+    public void GreaterThan_LessValue_ThrowException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value.AddMilliseconds(2);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreater(comparableValue));
+            => Guard.Value(value).GreaterThan(comparableValue));
     }
 
     [Fact]
-    public void IsGreaterOrEqual_GreaterValue_NoException()
+    public void GreaterThanOrEqualTo_GreaterValue_NoException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value.AddMilliseconds(-2);
 
-        Guard.Value(value).IsGreaterOrEqual(value);
-        Guard.Value(value).IsGreaterOrEqual(comparableValue);
+        Guard.Value(value).GreaterThanOrEqualTo(value);
+        Guard.Value(value).GreaterThanOrEqualTo(comparableValue);
     }
 
     [Fact]
-    public void IsGreaterOrEqual_LessValue_ThrowException()
+    public void GreaterThanOrEqualTo_LessValue_ThrowException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value.AddMilliseconds(2);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreaterOrEqual(comparableValue));
+            => Guard.Value(value).GreaterThanOrEqualTo(comparableValue));
     }
 
     [Fact]
-    public void IsLess_LessValue_NoException()
+    public void LessThan_LessValue_NoException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value.AddMilliseconds(2);
 
-        Guard.Value(value).IsLess(comparableValue);
+        Guard.Value(value).LessThan(comparableValue);
     }
 
     [Fact]
-    public void IsLess_GreaterValue_ThrowException()
+    public void LessThan_GreaterValue_ThrowException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value.AddMilliseconds(-2);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLess(comparableValue));
+            => Guard.Value(value).LessThan(comparableValue));
     }
 
     [Fact]
-    public void IsLessOrEqual_LessValue_NoException()
+    public void LessThanOrEqualTo_LessValue_NoException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value.AddMilliseconds(2);
 
-        Guard.Value(value).IsLessOrEqual(value);
-        Guard.Value(value).IsLessOrEqual(comparableValue);
+        Guard.Value(value).LessThanOrEqualTo(value);
+        Guard.Value(value).LessThanOrEqualTo(comparableValue);
     }
 
     [Fact]
-    public void IsLessOrEqual_GreaterValue_ThrowException()
+    public void LessThanOrEqualTo_GreaterValue_ThrowException()
     {
         var value = System.DateTime.UtcNow;
         var comparableValue = value.AddMilliseconds(-2);
 
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLessOrEqual(comparableValue));
+            => Guard.Value(value).LessThanOrEqualTo(comparableValue));
     }
 
     [Theory]
@@ -169,25 +169,25 @@ public sealed class GuardValueExtensionsDateTimeTests
     [InlineData("2020-01-15", "2020-01-01", "2020-01-15", true, false)]
     [InlineData("2020-01-05", "2020-01-01", "2020-01-15", false, true)]
     [InlineData("2020-01-05", "2020-01-01", "2020-01-15", true, true)]
-    public void InRange_ValidValueRange_NoException(
+    public void Between_ValidValueRange_NoException(
         System.DateTime value,
         System.DateTime min,
         System.DateTime max,
         bool excludeMin,
         bool excludeMax)
-        => Guard.Value(value).InRange(min, max, excludeMin, excludeMax);
+        => Guard.Value(value).Between(min, max, excludeMin, excludeMax);
 
     [Theory]
     [InlineData("2020-01-01", "2020-01-01", "2020-01-05", true, false)]
     [InlineData("2020-01-01", "2020-01-05", "2020-01-05", false, true)]
     [InlineData("2019-01-01", "2020-01-01", "2020-01-05", true, true)]
     [InlineData("2021-01-01", "2020-01-01", "2020-01-05", true, true)]
-    public void InRange_InvalidValueRange_ThrowException(
+    public void Between_InvalidValueRange_ThrowException(
         System.DateTime value,
         System.DateTime min,
         System.DateTime max,
         bool excludeMin,
         bool excludeMax)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).InRange(min, max, excludeMin, excludeMax));
+            => Guard.Value(value).Between(min, max, excludeMin, excludeMax));
 }

@@ -5,11 +5,11 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<long> IsEqual(this in GuardValue<long> guard, long value)
-        => ref GenericImplementation.IsEqual<long, LongPredicates>(guard, value);
+    public static ref readonly GuardValue<long> EqualTo(this in GuardValue<long> guard, long value)
+        => ref GenericImplementation.EqualTo<long, LongPredicates>(guard, value);
 
-    public static ref readonly GuardValue<long> NotEqual(this in GuardValue<long> guard, long value)
-        => ref GenericImplementation.NotEqual<long, LongPredicates>(guard, value);
+    public static ref readonly GuardValue<long> NotEqualTo(this in GuardValue<long> guard, long value)
+        => ref GenericImplementation.NotEqualTo<long, LongPredicates>(guard, value);
 
     public static ref readonly GuardValue<long> IsDefault(this in GuardValue<long> guard)
         => ref GenericImplementation.IsDefault<long, LongPredicates>(guard);
@@ -18,28 +18,28 @@ public static partial class GuardValueExtensions
         => ref GenericImplementation.NotDefault<long, LongPredicates>(guard);
 
     public static ref readonly GuardValue<long> IsPositive(this in GuardValue<long> guard)
-        => ref GenericImplementation.IsGreater<long, LongPredicates>(guard, default);
+        => ref GenericImplementation.GreaterThan<long, LongPredicates>(guard, default);
 
     public static ref readonly GuardValue<long> IsNegative(this in GuardValue<long> guard)
-        => ref GenericImplementation.IsLess<long, LongPredicates>(guard, default);
+        => ref GenericImplementation.LessThan<long, LongPredicates>(guard, default);
 
-    public static ref readonly GuardValue<long> IsGreater(this in GuardValue<long> guard, long value)
-        => ref GenericImplementation.IsGreater<long, LongPredicates>(guard, value);
+    public static ref readonly GuardValue<long> GreaterThan(this in GuardValue<long> guard, long value)
+        => ref GenericImplementation.GreaterThan<long, LongPredicates>(guard, value);
 
-    public static ref readonly GuardValue<long> IsGreaterOrEqual(this in GuardValue<long> guard, long value)
-        => ref GenericImplementation.IsGreaterOrEqual<long, LongPredicates>(guard, value);
+    public static ref readonly GuardValue<long> GreaterThanOrEqualTo(this in GuardValue<long> guard, long value)
+        => ref GenericImplementation.GreaterThanOrEqualTo<long, LongPredicates>(guard, value);
 
-    public static ref readonly GuardValue<long> IsLess(this in GuardValue<long> guard, long value)
-        => ref GenericImplementation.IsLess<long, LongPredicates>(guard, value);
+    public static ref readonly GuardValue<long> LessThan(this in GuardValue<long> guard, long value)
+        => ref GenericImplementation.LessThan<long, LongPredicates>(guard, value);
 
-    public static ref readonly GuardValue<long> IsLessOrEqual(this in GuardValue<long> guard, long value)
-        => ref GenericImplementation.IsLessOrEqual<long, LongPredicates>(guard, value);
+    public static ref readonly GuardValue<long> LessThanOrEqualTo(this in GuardValue<long> guard, long value)
+        => ref GenericImplementation.LessThanOrEqualTo<long, LongPredicates>(guard, value);
 
-    public static ref readonly GuardValue<long> InRange(
+    public static ref readonly GuardValue<long> Between(
         this in GuardValue<long> guard,
         long min,
         long max,
         bool excludeMin = false,
         bool excludeMax = false)
-        => ref GenericImplementation.InRange<long, LongPredicates>(guard, min, max, excludeMin, excludeMax);
+        => ref GenericImplementation.Between<long, LongPredicates>(guard, min, max, excludeMin, excludeMax);
 }

@@ -6,7 +6,7 @@ namespace ValueGuard._Internal;
 internal static partial class GenericImplementation
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsEqual<TValue>(
+    public static ref readonly GuardValue<TValue> EqualTo<TValue>(
         in GuardValue<TValue> guard,
         TValue value,
         IEqualityComparer<TValue> comparer)
@@ -20,7 +20,7 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsEqual<TValue, TPredicate>(in GuardValue<TValue> guard, TValue value)
+    public static ref readonly GuardValue<TValue> EqualTo<TValue, TPredicate>(in GuardValue<TValue> guard, TValue value)
         where TPredicate : struct, IEqualPredicate<TValue>
     {
         if (!default(TPredicate).IsEqual(guard.Value, value))
@@ -32,7 +32,7 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsEqual<TValue, TTolerance, TPredicate>(
+    public static ref readonly GuardValue<TValue> EqualTo<TValue, TTolerance, TPredicate>(
         in GuardValue<TValue> guard,
         TValue value,
         TTolerance tolerance)
@@ -52,7 +52,7 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> NotEqual<TValue>(
+    public static ref readonly GuardValue<TValue> NotEqualTo<TValue>(
         in GuardValue<TValue> guard,
         TValue value,
         IEqualityComparer<TValue> comparer)
@@ -66,7 +66,7 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> NotEqual<TValue, TPredicate>(in GuardValue<TValue> guard, TValue value)
+    public static ref readonly GuardValue<TValue> NotEqualTo<TValue, TPredicate>(in GuardValue<TValue> guard, TValue value)
         where TPredicate : struct, IEqualPredicate<TValue>
     {
         if (default(TPredicate).IsEqual(guard.Value, value))
@@ -78,7 +78,7 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> NotEqual<TValue, TTolerance, TPredicate>(
+    public static ref readonly GuardValue<TValue> NotEqualTo<TValue, TTolerance, TPredicate>(
         in GuardValue<TValue> guard,
         TValue value,
         TTolerance tolerance)

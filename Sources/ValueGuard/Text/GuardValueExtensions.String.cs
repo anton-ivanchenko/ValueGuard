@@ -5,23 +5,23 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<string> IsEqual(this in GuardValue<string> guard, string value)
-        => ref GenericImplementation.IsEqual(guard, value, EqualityComparer<string>.Default);
+    public static ref readonly GuardValue<string> EqualTo(this in GuardValue<string> guard, string value)
+        => ref GenericImplementation.EqualTo(guard, value, EqualityComparer<string>.Default);
 
-    public static ref readonly GuardValue<string> IsEqual(
+    public static ref readonly GuardValue<string> EqualTo(
         this in GuardValue<string> guard,
         string value,
         IEqualityComparer<string> comparer)
-        => ref GenericImplementation.IsEqual(guard, value, comparer);
+        => ref GenericImplementation.EqualTo(guard, value, comparer);
 
-    public static ref readonly GuardValue<string> NotEqual(this in GuardValue<string> guard, string value)
-        => ref GenericImplementation.NotEqual(guard, value, EqualityComparer<string>.Default);
+    public static ref readonly GuardValue<string> NotEqualTo(this in GuardValue<string> guard, string value)
+        => ref GenericImplementation.NotEqualTo(guard, value, EqualityComparer<string>.Default);
 
-    public static ref readonly GuardValue<string> NotEqual(
+    public static ref readonly GuardValue<string> NotEqualTo(
         this in GuardValue<string> guard,
         string value,
         IEqualityComparer<string> comparer)
-        => ref GenericImplementation.NotEqual(guard, value, comparer);
+        => ref GenericImplementation.NotEqualTo(guard, value, comparer);
 
     public static ref readonly GuardValue<string> IsEmpty(this in GuardValue<string> guard)
     {

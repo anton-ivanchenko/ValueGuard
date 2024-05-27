@@ -2,10 +2,10 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<T> Is<T>(this in GuardValue<T> guard, Func<T, bool> predicate)
-        => ref guard.Is(predicate, "The value does not satisfy the specified predicate.");
+    public static ref readonly GuardValue<T> Must<T>(this in GuardValue<T> guard, Func<T, bool> predicate)
+        => ref guard.Must(predicate, "The value does not satisfy the specified predicate.");
 
-    public static ref readonly GuardValue<T> Is<T>(this in GuardValue<T> guard, Func<T, bool> predicate, string errorMessage)
+    public static ref readonly GuardValue<T> Must<T>(this in GuardValue<T> guard, Func<T, bool> predicate, string errorMessage)
     {
         if (!predicate.Invoke(guard.Value))
         {

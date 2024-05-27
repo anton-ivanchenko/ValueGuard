@@ -4,25 +4,25 @@ public sealed class GuardValueExtensionsShortTests
 {
     [Theory]
     [InlineData(10, 10)]
-    public void IsEqual_Equals_NoException(short value, short comparableValue)
-        => Guard.Value(value).IsEqual(comparableValue);
+    public void EqualTo_Equals_NoException(short value, short comparableValue)
+        => Guard.Value(value).EqualTo(comparableValue);
 
     [Theory]
     [InlineData(10, 20)]
-    public void IsEqual_NoEquals_ThrowException(short value, short comparableValue)
+    public void EqualTo_NoEquals_ThrowException(short value, short comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsEqual(comparableValue));
+            => Guard.Value(value).EqualTo(comparableValue));
 
     [Theory]
     [InlineData(0, 2)]
-    public void IsNotEqual_NotEquals_NoException(short value, short comparableValue)
-        => Guard.Value(value).NotEqual(comparableValue);
+    public void IsNotEqualTo_NotEquals_NoException(short value, short comparableValue)
+        => Guard.Value(value).NotEqualTo(comparableValue);
 
     [Theory]
     [InlineData(0, 0)]
-    public void IsNotEqual_Equals_ThrowException(short value, short comparableValue)
+    public void IsNotEqualTo_Equals_ThrowException(short value, short comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).NotEqual(comparableValue));
+            => Guard.Value(value).NotEqualTo(comparableValue));
 
     [Theory]
     [InlineData(default(short))]
@@ -74,51 +74,51 @@ public sealed class GuardValueExtensionsShortTests
 
     [Theory]
     [InlineData(5, 0)]
-    public void IsGreater_GreaterThanValue_NoException(short value, short comparableValue)
-        => Guard.Value(value).IsGreater(comparableValue);
+    public void GreaterThan_GreaterThanValue_NoException(short value, short comparableValue)
+        => Guard.Value(value).GreaterThan(comparableValue);
 
     [Theory]
     [InlineData(0, 5)]
     [InlineData(5, 5)]
-    public void IsGreater_LessOrEqualThanValue_ThrowException(short value, short comparableValue)
+    public void GreaterThan_LessOrEqualThanValue_ThrowException(short value, short comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreater(comparableValue));
+            => Guard.Value(value).GreaterThan(comparableValue));
 
     [Theory]
     [InlineData(5, 0)]
     [InlineData(5, 5)]
-    public void IsGreaterOrEqual_GreaterOrEqualThanValue_NoException(short value, short comparableValue)
-        => Guard.Value(value).IsGreaterOrEqual(comparableValue);
+    public void GreaterThanOrEqualTo_GreaterOrEqualThanValue_NoException(short value, short comparableValue)
+        => Guard.Value(value).GreaterThanOrEqualTo(comparableValue);
 
     [Theory]
     [InlineData(0, 5)]
-    public void IsGreaterOrEqual_LessThanValue_ThrowException(short value, short comparableValue)
+    public void GreaterThanOrEqualTo_LessThanValue_ThrowException(short value, short comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsGreaterOrEqual(comparableValue));
+            => Guard.Value(value).GreaterThanOrEqualTo(comparableValue));
 
     [Theory]
     [InlineData(0, 5)]
-    public void IsLess_LessThanValue_NoException(short value, short comparableValue)
-        => Guard.Value(value).IsLess(comparableValue);
+    public void LessThan_LessThanValue_NoException(short value, short comparableValue)
+        => Guard.Value(value).LessThan(comparableValue);
 
     [Theory]
     [InlineData(5, 0)]
     [InlineData(5, 5)]
-    public void IsLess_GreaterOrEqualThanValue_ThrowException(short value, short comparableValue)
+    public void LessThan_GreaterOrEqualThanValue_ThrowException(short value, short comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLess(comparableValue));
+            => Guard.Value(value).LessThan(comparableValue));
 
     [Theory]
     [InlineData(2, 5)]
     [InlineData(5, 5)]
-    public void IsLessOrEqual_LessOrEqualThanNumber_NoException(short value, short comparableValue)
-        => Guard.Value(value).IsLessOrEqual(comparableValue);
+    public void LessThanOrEqualTo_LessOrEqualThanNumber_NoException(short value, short comparableValue)
+        => Guard.Value(value).LessThanOrEqualTo(comparableValue);
 
     [Theory]
     [InlineData(8, 5)]
-    public void IsLessOrEqual_GreaterThanNumber_ThrowException(short value, short comparableValue)
+    public void LessThanOrEqualTo_GreaterThanNumber_ThrowException(short value, short comparableValue)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).IsLessOrEqual(comparableValue));
+            => Guard.Value(value).LessThanOrEqualTo(comparableValue));
 
     [Theory]
     [InlineData(0, 0, 10, false, false)]
@@ -127,15 +127,15 @@ public sealed class GuardValueExtensionsShortTests
     [InlineData(10, 0, 10, true, false)]
     [InlineData(5, 0, 10, false, true)]
     [InlineData(5, 0, 10, true, true)]
-    public void InRange_ValidRange_NoException(short value, short min, short max, bool excludeMin, bool excludeMax)
-        => Guard.Value(value).InRange(min, max, excludeMin, excludeMax);
+    public void Between_ValidRange_NoException(short value, short min, short max, bool excludeMin, bool excludeMax)
+        => Guard.Value(value).Between(min, max, excludeMin, excludeMax);
 
     [Theory]
     [InlineData(0, 0, 10, true, false)]
     [InlineData(10, 0, 10, false, true)]
     [InlineData(0, 0, 10, true, true)]
     [InlineData(10, 0, 10, true, true)]
-    public void InRange_InvalidRange_ThrowException(short value, short min, short max, bool excludeMin, bool excludeMax)
+    public void Between_InvalidRange_ThrowException(short value, short min, short max, bool excludeMin, bool excludeMax)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).InRange(min, max, excludeMin, excludeMax));
+            => Guard.Value(value).Between(min, max, excludeMin, excludeMax));
 }
