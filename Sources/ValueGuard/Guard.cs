@@ -7,7 +7,7 @@ public static class Guard
 {
     public static GuardSettings Settings { get; set; } = new();
 
-    public static void Null<T>(T? value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
+    public static void IsNull<T>(T? value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where T : struct
     {
         if (!value.HasValue)
@@ -18,7 +18,7 @@ public static class Guard
         throw GuardException.Create(parameterName, value, "Value must be null");
     }
 
-    public static void Null<T>(T? value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
+    public static void IsNull<T>(T? value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where T : class
     {
         if (value is null)
