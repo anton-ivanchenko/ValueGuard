@@ -35,11 +35,11 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<sbyte> LessThanOrEqualTo(this in GuardValue<sbyte> guard, sbyte value)
         => ref GenericImplementation.LessThanOrEqualTo<sbyte, SBytePredicates>(guard, value);
 
-    public static ref readonly GuardValue<sbyte> Between(
+    public static ref readonly GuardValue<sbyte> InRange(
         this in GuardValue<sbyte> guard,
         sbyte min,
         sbyte max,
         bool excludeMin = false,
         bool excludeMax = false)
-        => ref GenericImplementation.Between<sbyte, SBytePredicates>(guard, min, max, excludeMin, excludeMax);
+        => ref GenericImplementation.InRange<sbyte, SBytePredicates>(guard, min, max, excludeMin, excludeMax);
 }

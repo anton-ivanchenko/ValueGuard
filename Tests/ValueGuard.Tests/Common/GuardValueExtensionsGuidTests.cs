@@ -174,9 +174,9 @@ public sealed class GuardValueExtensionsGuidTests
         "f4147d65-4816-4f1c-a30c-7f9f643026c8",
         "f4147d65-4816-4f1c-a30c-7f9f643027c0",
         true, true)]
-    public void Between_ValidValueRanges_NoException(Guid value, Guid min, Guid max, bool excludeMin, bool excludeMax)
+    public void InRange_ValidValueRanges_NoException(Guid value, Guid min, Guid max, bool excludeMin, bool excludeMax)
     {
-        Guard.Value(value).Between(min, max, excludeMin, excludeMax);
+        Guard.Value(value).InRange(min, max, excludeMin, excludeMax);
     }
 
     [Theory]
@@ -196,9 +196,9 @@ public sealed class GuardValueExtensionsGuidTests
         "f4147d65-4816-4f1c-a30c-7f9f643026c8",
         "f4147d65-4816-4f1c-a30c-7f9f643027c0",
         true, true)]
-    public void Between_InvalidValueRange_ThrowException(Guid value, Guid min, Guid max, bool excludeMin, bool excludeMax)
+    public void InRange_InvalidValueRange_ThrowException(Guid value, Guid min, Guid max, bool excludeMin, bool excludeMax)
     {
         Assert.Throws<GuardException>(()
-            => Guard.Value(value).Between(min, max, excludeMin, excludeMax));
+            => Guard.Value(value).InRange(min, max, excludeMin, excludeMax));
     }
 }

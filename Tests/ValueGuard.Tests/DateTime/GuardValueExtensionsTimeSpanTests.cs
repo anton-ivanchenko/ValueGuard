@@ -169,25 +169,25 @@ public sealed class GuardValueExtensionsTimeSpanTests
     [InlineData("00:15:00", "00:10:00", "00:15:00", true, false)]
     [InlineData("00:12:00", "00:10:00", "00:15:00", false, true)]
     [InlineData("00:12:00", "00:10:00", "00:15:00", true, true)]
-    public void Between_ValidValueRange_NoException(
+    public void InRange_ValidValueRange_NoException(
         System.DateTime value,
         System.DateTime min,
         System.DateTime max,
         bool excludeMin,
         bool excludeMax)
-        => Guard.Value(value).Between(min, max, excludeMin, excludeMax);
+        => Guard.Value(value).InRange(min, max, excludeMin, excludeMax);
 
     [Theory]
     [InlineData("00:10:00", "00:10:00", "00:15:00", true, false)]
     [InlineData("00:10:00", "00:15:00", "00:15:00", false, true)]
     [InlineData("00:05:00", "00:10:00", "00:15:00", true, true)]
     [InlineData("00:30:00", "00:10:00", "00:15:00", true, true)]
-    public void Between_InvalidValueRange_ThrowException(
+    public void InRange_InvalidValueRange_ThrowException(
         System.DateTime value,
         System.DateTime min,
         System.DateTime max,
         bool excludeMin,
         bool excludeMax)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).Between(min, max, excludeMin, excludeMax));
+            => Guard.Value(value).InRange(min, max, excludeMin, excludeMax));
 }

@@ -169,25 +169,25 @@ public sealed class GuardValueExtensionsDateTimeTests
     [InlineData("2020-01-15", "2020-01-01", "2020-01-15", true, false)]
     [InlineData("2020-01-05", "2020-01-01", "2020-01-15", false, true)]
     [InlineData("2020-01-05", "2020-01-01", "2020-01-15", true, true)]
-    public void Between_ValidValueRange_NoException(
+    public void InRange_ValidValueRange_NoException(
         System.DateTime value,
         System.DateTime min,
         System.DateTime max,
         bool excludeMin,
         bool excludeMax)
-        => Guard.Value(value).Between(min, max, excludeMin, excludeMax);
+        => Guard.Value(value).InRange(min, max, excludeMin, excludeMax);
 
     [Theory]
     [InlineData("2020-01-01", "2020-01-01", "2020-01-05", true, false)]
     [InlineData("2020-01-01", "2020-01-05", "2020-01-05", false, true)]
     [InlineData("2019-01-01", "2020-01-01", "2020-01-05", true, true)]
     [InlineData("2021-01-01", "2020-01-01", "2020-01-05", true, true)]
-    public void Between_InvalidValueRange_ThrowException(
+    public void InRange_InvalidValueRange_ThrowException(
         System.DateTime value,
         System.DateTime min,
         System.DateTime max,
         bool excludeMin,
         bool excludeMax)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).Between(min, max, excludeMin, excludeMax));
+            => Guard.Value(value).InRange(min, max, excludeMin, excludeMax));
 }

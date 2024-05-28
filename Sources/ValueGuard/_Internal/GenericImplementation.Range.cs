@@ -58,7 +58,7 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> Between<TValue, TPredicate>(
+    public static ref readonly GuardValue<TValue> InRange<TValue, TPredicate>(
         in GuardValue<TValue> guard,
         TValue min,
         TValue max,

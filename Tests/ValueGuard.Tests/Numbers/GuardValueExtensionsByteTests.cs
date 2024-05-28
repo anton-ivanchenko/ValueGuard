@@ -101,15 +101,15 @@ public sealed class GuardValueExtensionsByteTests
     [InlineData(10, 0, 10, true, false)]
     [InlineData(5, 0, 10, false, true)]
     [InlineData(5, 0, 10, true, true)]
-    public void Between_ValidRange_NoException(byte value, byte min, byte max, bool excludeMin, bool excludeMax)
-        => Guard.Value(value).Between(min, max, excludeMin, excludeMax);
+    public void InRange_ValidRange_NoException(byte value, byte min, byte max, bool excludeMin, bool excludeMax)
+        => Guard.Value(value).InRange(min, max, excludeMin, excludeMax);
 
     [Theory]
     [InlineData(0, 0, 10, true, false)]
     [InlineData(10, 0, 10, false, true)]
     [InlineData(0, 0, 10, true, true)]
     [InlineData(10, 0, 10, true, true)]
-    public void Between_InvalidRange_ThrowException(byte value, byte min, byte max, bool excludeMin, bool excludeMax)
+    public void InRange_InvalidRange_ThrowException(byte value, byte min, byte max, bool excludeMin, bool excludeMax)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).Between(min, max, excludeMin, excludeMax));
+            => Guard.Value(value).InRange(min, max, excludeMin, excludeMax));
 }

@@ -43,11 +43,11 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<decimal> LessThanOrEqualTo(this in GuardValue<decimal> guard, decimal value)
         => ref GenericImplementation.LessThanOrEqualTo<decimal, DecimalPredicates>(guard, value);
 
-    public static ref readonly GuardValue<decimal> Between(
+    public static ref readonly GuardValue<decimal> InRange(
         this in GuardValue<decimal> guard,
         decimal min,
         decimal max,
         bool excludeMin = false,
         bool excludeMax = false)
-        => ref GenericImplementation.Between<decimal, DecimalPredicates>(guard, min, max, excludeMin, excludeMax);
+        => ref GenericImplementation.InRange<decimal, DecimalPredicates>(guard, min, max, excludeMin, excludeMax);
 }

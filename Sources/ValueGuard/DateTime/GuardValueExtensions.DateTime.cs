@@ -41,11 +41,11 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<DateTime> LessThanOrEqualTo(this in GuardValue<DateTime> guard, DateTime value)
         => ref GenericImplementation.LessThanOrEqualTo<DateTime, DateTimePredicates>(guard, value);
 
-    public static ref readonly GuardValue<DateTime> Between(
+    public static ref readonly GuardValue<DateTime> InRange(
         this in GuardValue<DateTime> guard,
         DateTime min,
         DateTime max,
         bool excludeMin = false,
         bool excludeMax = false)
-        => ref GenericImplementation.Between<DateTime, DateTimePredicates>(guard, min, max, excludeMin, excludeMax);
+        => ref GenericImplementation.InRange<DateTime, DateTimePredicates>(guard, min, max, excludeMin, excludeMax);
 }

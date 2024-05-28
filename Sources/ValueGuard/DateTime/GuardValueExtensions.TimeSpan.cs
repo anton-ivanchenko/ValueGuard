@@ -41,11 +41,11 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<TimeSpan> LessThanOrEqualTo(this in GuardValue<TimeSpan> guard, TimeSpan value)
         => ref GenericImplementation.LessThanOrEqualTo<TimeSpan, TimeSpanPredicates>(guard, value);
 
-    public static ref readonly GuardValue<TimeSpan> Between(
+    public static ref readonly GuardValue<TimeSpan> InRange(
         this in GuardValue<TimeSpan> guard,
         TimeSpan min,
         TimeSpan max,
         bool excludeMin = false,
         bool excludeMax = false)
-        => ref GenericImplementation.Between<TimeSpan, TimeSpanPredicates>(guard, min, max, excludeMin, excludeMax);
+        => ref GenericImplementation.InRange<TimeSpan, TimeSpanPredicates>(guard, min, max, excludeMin, excludeMax);
 }

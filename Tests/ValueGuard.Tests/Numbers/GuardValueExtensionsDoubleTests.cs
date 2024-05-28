@@ -162,15 +162,15 @@ public sealed class GuardValueExtensionsDoubleTests
     [InlineData(1, 0, 1, true, false)]
     [InlineData(0, 0, 1, false, true)]
     [InlineData(0.25, 0, 1, true, true)]
-    public void Between_ValidRange_NoException(double value, double min, double max, bool excludeMin, bool excludeMax)
-        => Guard.Value(value).Between(min, max, excludeMin, excludeMax);
+    public void InRange_ValidRange_NoException(double value, double min, double max, bool excludeMin, bool excludeMax)
+        => Guard.Value(value).InRange(min, max, excludeMin, excludeMax);
 
     [Theory]
     [InlineData(0, 0, 1, true, false)]
     [InlineData(1, 0, 1, false, true)]
     [InlineData(0, 0, 1, true, true)]
     [InlineData(1, 0, 1, true, true)]
-    public void Between_InvalidRange_ThrowException(double value, double min, double max, bool excludeMin, bool excludeMax)
+    public void InRange_InvalidRange_ThrowException(double value, double min, double max, bool excludeMin, bool excludeMax)
         => Assert.Throws<GuardException>(()
-            => Guard.Value(value).Between(min, max, excludeMin, excludeMax));
+            => Guard.Value(value).InRange(min, max, excludeMin, excludeMax));
 }

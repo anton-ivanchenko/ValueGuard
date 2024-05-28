@@ -29,11 +29,11 @@ public static partial class GuardValueExtensions
     public static ref readonly GuardValue<uint> LessThanOrEqualTo(this in GuardValue<uint> guard, uint value)
         => ref GenericImplementation.LessThanOrEqualTo<uint, UIntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<uint> Between(
+    public static ref readonly GuardValue<uint> InRange(
         this in GuardValue<uint> guard,
         uint min,
         uint max,
         bool excludeMin = false,
         bool excludeMax = false)
-        => ref GenericImplementation.Between<uint, UIntPredicates>(guard, min, max, excludeMin, excludeMax);
+        => ref GenericImplementation.InRange<uint, UIntPredicates>(guard, min, max, excludeMin, excludeMax);
 }

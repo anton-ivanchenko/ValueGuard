@@ -114,16 +114,16 @@ public sealed class GuardValueExtensionsStringTests
             => Guard.Value("value").HasExactLength(6));
 
     [Fact]
-    public void HasLengthBetween_InRangeValue_NoException()
+    public void HasLengthInRange_InRangeValue_NoException()
         => Guard.Value("value").HasLengthInRange(0, 10);
 
     [Fact]
-    public void HasLengthBetween_GreaterThanRangeValue_NoException()
+    public void HasLengthInRange_GreaterThanRangeValue_NoException()
         => Assert.Throws<GuardException>(()
             => Guard.Value("value").HasLengthInRange(0, 4));
 
     [Fact]
-    public void HasLengthBetween_LessThenRangeValue_NoException()
+    public void HasLengthInRange_LessThenRangeValue_NoException()
         => Assert.Throws<GuardException>(()
             => Guard.Value("value").HasLengthInRange(10, 20));
 
