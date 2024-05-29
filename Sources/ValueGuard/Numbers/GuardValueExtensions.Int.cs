@@ -5,38 +5,38 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<int> EqualTo(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardContext<int> EqualTo(this in GuardContext<int> guard, int value)
         => ref GenericImplementation.EqualTo<int, IntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<int> NotEqualTo(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardContext<int> NotEqualTo(this in GuardContext<int> guard, int value)
         => ref GenericImplementation.NotEqualTo<int, IntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<int> IsDefault(this in GuardValue<int> guard)
+    public static ref readonly GuardContext<int> IsDefault(this in GuardContext<int> guard)
         => ref GenericImplementation.IsDefault<int, IntPredicates>(guard);
 
-    public static ref readonly GuardValue<int> NotDefault(this in GuardValue<int> guard)
+    public static ref readonly GuardContext<int> NotDefault(this in GuardContext<int> guard)
         => ref GenericImplementation.NotDefault<int, IntPredicates>(guard);
 
-    public static ref readonly GuardValue<int> IsPositive(this in GuardValue<int> guard)
+    public static ref readonly GuardContext<int> IsPositive(this in GuardContext<int> guard)
         => ref GenericImplementation.GreaterThan<int, IntPredicates>(guard, default);
 
-    public static ref readonly GuardValue<int> IsNegative(this in GuardValue<int> guard)
+    public static ref readonly GuardContext<int> IsNegative(this in GuardContext<int> guard)
         => ref GenericImplementation.LessThan<int, IntPredicates>(guard, default);
 
-    public static ref readonly GuardValue<int> GreaterThan(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardContext<int> GreaterThan(this in GuardContext<int> guard, int value)
         => ref GenericImplementation.GreaterThan<int, IntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<int> GreaterThanOrEqualTo(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardContext<int> GreaterThanOrEqualTo(this in GuardContext<int> guard, int value)
         => ref GenericImplementation.GreaterThanOrEqualTo<int, IntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<int> LessThan(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardContext<int> LessThan(this in GuardContext<int> guard, int value)
         => ref GenericImplementation.LessThan<int, IntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<int> LessThanOrEqualTo(this in GuardValue<int> guard, int value)
+    public static ref readonly GuardContext<int> LessThanOrEqualTo(this in GuardContext<int> guard, int value)
         => ref GenericImplementation.LessThanOrEqualTo<int, IntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<int> InRange(
-        this in GuardValue<int> guard,
+    public static ref readonly GuardContext<int> InRange(
+        this in GuardContext<int> guard,
         int min,
         int max,
         bool excludeMin = false,

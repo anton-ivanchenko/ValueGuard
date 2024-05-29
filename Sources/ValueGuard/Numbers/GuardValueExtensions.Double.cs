@@ -7,44 +7,44 @@ public static partial class GuardValueExtensions
 {
     private const double _defaultDoubleTolerance = 1e-12;
 
-    public static ref readonly GuardValue<double> EqualTo(
-        this in GuardValue<double> guard,
+    public static ref readonly GuardContext<double> EqualTo(
+        this in GuardContext<double> guard,
         double value,
         double tolerance = _defaultDoubleTolerance)
         => ref GenericImplementation.EqualTo<double, double, DoublePredicates>(guard, value, tolerance);
 
-    public static ref readonly GuardValue<double> NotEqualTo(
-        this in GuardValue<double> guard,
+    public static ref readonly GuardContext<double> NotEqualTo(
+        this in GuardContext<double> guard,
         double value,
         double tolerance = _defaultDoubleTolerance)
         => ref GenericImplementation.NotEqualTo<double, double, DoublePredicates>(guard, value, tolerance);
 
-    public static ref readonly GuardValue<double> IsDefault(this in GuardValue<double> guard)
+    public static ref readonly GuardContext<double> IsDefault(this in GuardContext<double> guard)
         => ref GenericImplementation.IsDefault<double, DoublePredicates>(guard);
 
-    public static ref readonly GuardValue<double> NotDefault(this in GuardValue<double> guard)
+    public static ref readonly GuardContext<double> NotDefault(this in GuardContext<double> guard)
         => ref GenericImplementation.NotDefault<double, DoublePredicates>(guard);
 
-    public static ref readonly GuardValue<double> IsPositive(this in GuardValue<double> guard)
+    public static ref readonly GuardContext<double> IsPositive(this in GuardContext<double> guard)
         => ref GenericImplementation.GreaterThan<double, DoublePredicates>(guard, default);
 
-    public static ref readonly GuardValue<double> IsNegative(this in GuardValue<double> guard)
+    public static ref readonly GuardContext<double> IsNegative(this in GuardContext<double> guard)
         => ref GenericImplementation.LessThan<double, DoublePredicates>(guard, default);
 
-    public static ref readonly GuardValue<double> GreaterThan(this in GuardValue<double> guard, double value)
+    public static ref readonly GuardContext<double> GreaterThan(this in GuardContext<double> guard, double value)
         => ref GenericImplementation.GreaterThan<double, DoublePredicates>(guard, value);
 
-    public static ref readonly GuardValue<double> GreaterThanOrEqualTo(this in GuardValue<double> guard, double value)
+    public static ref readonly GuardContext<double> GreaterThanOrEqualTo(this in GuardContext<double> guard, double value)
         => ref GenericImplementation.GreaterThanOrEqualTo<double, DoublePredicates>(guard, value);
 
-    public static ref readonly GuardValue<double> LessThan(this in GuardValue<double> guard, double value)
+    public static ref readonly GuardContext<double> LessThan(this in GuardContext<double> guard, double value)
         => ref GenericImplementation.LessThan<double, DoublePredicates>(guard, value);
 
-    public static ref readonly GuardValue<double> LessThanOrEqualTo(this in GuardValue<double> guard, double value)
+    public static ref readonly GuardContext<double> LessThanOrEqualTo(this in GuardContext<double> guard, double value)
         => ref GenericImplementation.LessThanOrEqualTo<double, DoublePredicates>(guard, value);
 
-    public static ref readonly GuardValue<double> InRange(
-        this in GuardValue<double> guard,
+    public static ref readonly GuardContext<double> InRange(
+        this in GuardContext<double> guard,
         double min,
         double max,
         bool excludeMin = false,

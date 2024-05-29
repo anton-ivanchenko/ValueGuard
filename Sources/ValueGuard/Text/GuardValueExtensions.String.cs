@@ -5,25 +5,25 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<string> EqualTo(this in GuardValue<string> guard, string value)
+    public static ref readonly GuardContext<string> EqualTo(this in GuardContext<string> guard, string value)
         => ref GenericImplementation.EqualTo(guard, value, EqualityComparer<string>.Default);
 
-    public static ref readonly GuardValue<string> EqualTo(
-        this in GuardValue<string> guard,
+    public static ref readonly GuardContext<string> EqualTo(
+        this in GuardContext<string> guard,
         string value,
         IEqualityComparer<string> comparer)
         => ref GenericImplementation.EqualTo(guard, value, comparer);
 
-    public static ref readonly GuardValue<string> NotEqualTo(this in GuardValue<string> guard, string value)
+    public static ref readonly GuardContext<string> NotEqualTo(this in GuardContext<string> guard, string value)
         => ref GenericImplementation.NotEqualTo(guard, value, EqualityComparer<string>.Default);
 
-    public static ref readonly GuardValue<string> NotEqualTo(
-        this in GuardValue<string> guard,
+    public static ref readonly GuardContext<string> NotEqualTo(
+        this in GuardContext<string> guard,
         string value,
         IEqualityComparer<string> comparer)
         => ref GenericImplementation.NotEqualTo(guard, value, comparer);
 
-    public static ref readonly GuardValue<string> IsEmpty(this in GuardValue<string> guard)
+    public static ref readonly GuardContext<string> IsEmpty(this in GuardContext<string> guard)
     {
         if (guard.Value.Length > 0)
         {
@@ -33,7 +33,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> NotEmpty(this in GuardValue<string> guard)
+    public static ref readonly GuardContext<string> NotEmpty(this in GuardContext<string> guard)
     {
         if (string.IsNullOrEmpty(guard.Value))
         {
@@ -43,7 +43,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> IsWhiteSpace(this in GuardValue<string> guard)
+    public static ref readonly GuardContext<string> IsWhiteSpace(this in GuardContext<string> guard)
     {
         if (!string.IsNullOrWhiteSpace(guard.Value))
         {
@@ -53,7 +53,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> NotWhiteSpace(this in GuardValue<string> guard)
+    public static ref readonly GuardContext<string> NotWhiteSpace(this in GuardContext<string> guard)
     {
         if (string.IsNullOrWhiteSpace(guard.Value))
         {
@@ -63,7 +63,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> HasMinLength(this in GuardValue<string> guard, int minLength)
+    public static ref readonly GuardContext<string> HasMinLength(this in GuardContext<string> guard, int minLength)
     {
         if (guard.Value.Length < minLength)
         {
@@ -73,7 +73,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> HasMaxLength(this in GuardValue<string> guard, int maxLength)
+    public static ref readonly GuardContext<string> HasMaxLength(this in GuardContext<string> guard, int maxLength)
     {
         if (guard.Value.Length > maxLength)
         {
@@ -83,7 +83,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> HasExactLength(this in GuardValue<string> guard, int exactLength)
+    public static ref readonly GuardContext<string> HasExactLength(this in GuardContext<string> guard, int exactLength)
     {
         if (guard.Value.Length != exactLength)
         {
@@ -93,7 +93,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> HasLengthInRange(this in GuardValue<string> guard, int minLength, int maxLength)
+    public static ref readonly GuardContext<string> HasLengthInRange(this in GuardContext<string> guard, int minLength, int maxLength)
     {
         if (guard.Value.Length < minLength || guard.Value.Length > maxLength)
         {
@@ -103,7 +103,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> MatchesPattern(this in GuardValue<string> guard, string pattern)
+    public static ref readonly GuardContext<string> MatchesPattern(this in GuardContext<string> guard, string pattern)
     {
         if (!Regex.IsMatch(guard.Value, pattern))
         {
@@ -113,7 +113,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<string> MatchesPattern(this in GuardValue<string> guard, Regex pattern)
+    public static ref readonly GuardContext<string> MatchesPattern(this in GuardContext<string> guard, Regex pattern)
     {
         if (!pattern.IsMatch(guard.Value))
         {

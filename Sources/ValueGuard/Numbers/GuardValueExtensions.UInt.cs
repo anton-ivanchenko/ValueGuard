@@ -5,32 +5,32 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<uint> EqualTo(this in GuardValue<uint> guard, uint value)
+    public static ref readonly GuardContext<uint> EqualTo(this in GuardContext<uint> guard, uint value)
         => ref GenericImplementation.EqualTo<uint, UIntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<uint> NotEqualTo(this in GuardValue<uint> guard, uint value)
+    public static ref readonly GuardContext<uint> NotEqualTo(this in GuardContext<uint> guard, uint value)
         => ref GenericImplementation.NotEqualTo<uint, UIntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<uint> IsDefault(this in GuardValue<uint> guard)
+    public static ref readonly GuardContext<uint> IsDefault(this in GuardContext<uint> guard)
         => ref GenericImplementation.IsDefault<uint, UIntPredicates>(guard);
 
-    public static ref readonly GuardValue<uint> NotDefault(this in GuardValue<uint> guard)
+    public static ref readonly GuardContext<uint> NotDefault(this in GuardContext<uint> guard)
         => ref GenericImplementation.NotDefault<uint, UIntPredicates>(guard);
 
-    public static ref readonly GuardValue<uint> GreaterThan(this in GuardValue<uint> guard, uint value)
+    public static ref readonly GuardContext<uint> GreaterThan(this in GuardContext<uint> guard, uint value)
         => ref GenericImplementation.GreaterThan<uint, UIntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<uint> GreaterThanOrEqualTo(this in GuardValue<uint> guard, uint value)
+    public static ref readonly GuardContext<uint> GreaterThanOrEqualTo(this in GuardContext<uint> guard, uint value)
         => ref GenericImplementation.GreaterThanOrEqualTo<uint, UIntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<uint> LessThan(this in GuardValue<uint> guard, uint value)
+    public static ref readonly GuardContext<uint> LessThan(this in GuardContext<uint> guard, uint value)
         => ref GenericImplementation.LessThan<uint, UIntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<uint> LessThanOrEqualTo(this in GuardValue<uint> guard, uint value)
+    public static ref readonly GuardContext<uint> LessThanOrEqualTo(this in GuardContext<uint> guard, uint value)
         => ref GenericImplementation.LessThanOrEqualTo<uint, UIntPredicates>(guard, value);
 
-    public static ref readonly GuardValue<uint> InRange(
-        this in GuardValue<uint> guard,
+    public static ref readonly GuardContext<uint> InRange(
+        this in GuardContext<uint> guard,
         uint min,
         uint max,
         bool excludeMin = false,

@@ -5,32 +5,32 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<byte> EqualTo(this in GuardValue<byte> guard, byte value)
+    public static ref readonly GuardContext<byte> EqualTo(this in GuardContext<byte> guard, byte value)
         => ref GenericImplementation.EqualTo<byte, BytePredicates>(guard, value);
 
-    public static ref readonly GuardValue<byte> NotEqualTo(this in GuardValue<byte> guard, byte value)
+    public static ref readonly GuardContext<byte> NotEqualTo(this in GuardContext<byte> guard, byte value)
         => ref GenericImplementation.NotEqualTo<byte, BytePredicates>(guard, value);
 
-    public static ref readonly GuardValue<byte> IsDefault(this in GuardValue<byte> guard)
+    public static ref readonly GuardContext<byte> IsDefault(this in GuardContext<byte> guard)
         => ref GenericImplementation.IsDefault<byte, BytePredicates>(guard);
 
-    public static ref readonly GuardValue<byte> NotDefault(this in GuardValue<byte> guard)
+    public static ref readonly GuardContext<byte> NotDefault(this in GuardContext<byte> guard)
         => ref GenericImplementation.NotDefault<byte, BytePredicates>(guard);
 
-    public static ref readonly GuardValue<byte> GreaterThan(this in GuardValue<byte> guard, byte value)
+    public static ref readonly GuardContext<byte> GreaterThan(this in GuardContext<byte> guard, byte value)
         => ref GenericImplementation.GreaterThan<byte, BytePredicates>(guard, value);
 
-    public static ref readonly GuardValue<byte> GreaterThanOrEqualTo(this in GuardValue<byte> guard, byte value)
+    public static ref readonly GuardContext<byte> GreaterThanOrEqualTo(this in GuardContext<byte> guard, byte value)
         => ref GenericImplementation.GreaterThanOrEqualTo<byte, BytePredicates>(guard, value);
 
-    public static ref readonly GuardValue<byte> LessThan(this in GuardValue<byte> guard, byte value)
+    public static ref readonly GuardContext<byte> LessThan(this in GuardContext<byte> guard, byte value)
         => ref GenericImplementation.LessThan<byte, BytePredicates>(guard, value);
 
-    public static ref readonly GuardValue<byte> LessThanOrEqualTo(this in GuardValue<byte> guard, byte value)
+    public static ref readonly GuardContext<byte> LessThanOrEqualTo(this in GuardContext<byte> guard, byte value)
         => ref GenericImplementation.LessThanOrEqualTo<byte, BytePredicates>(guard, value);
 
-    public static ref readonly GuardValue<byte> InRange(
-        this in GuardValue<byte> guard,
+    public static ref readonly GuardContext<byte> InRange(
+        this in GuardContext<byte> guard,
         byte min,
         byte max,
         bool excludeMin = false,

@@ -5,13 +5,13 @@ namespace ValueGuard;
 
 public static partial class GuardValueExtensions
 {
-    public static ref readonly GuardValue<char> EqualTo(this in GuardValue<char> guard, char value)
+    public static ref readonly GuardContext<char> EqualTo(this in GuardContext<char> guard, char value)
         => ref GenericImplementation.EqualTo<char, CharPredicates>(guard, value);
 
-    public static ref readonly GuardValue<char> NotEqualTo(this in GuardValue<char> guard, char value)
+    public static ref readonly GuardContext<char> NotEqualTo(this in GuardContext<char> guard, char value)
         => ref GenericImplementation.NotEqualTo<char, CharPredicates>(guard, value);
 
-    public static ref readonly GuardValue<char> IsDigit(this in GuardValue<char> guard)
+    public static ref readonly GuardContext<char> IsDigit(this in GuardContext<char> guard)
     {
         if (!char.IsDigit(guard.Value))
         {
@@ -21,7 +21,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<char> IsLetter(this in GuardValue<char> guard)
+    public static ref readonly GuardContext<char> IsLetter(this in GuardContext<char> guard)
     {
         if (!char.IsLetter(guard.Value))
         {
@@ -31,7 +31,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<char> IsLetterOrDigit(this in GuardValue<char> guard)
+    public static ref readonly GuardContext<char> IsLetterOrDigit(this in GuardContext<char> guard)
     {
         if (!char.IsLetterOrDigit(guard.Value))
         {
@@ -41,7 +41,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<char> IsWhiteSpace(this in GuardValue<char> guard)
+    public static ref readonly GuardContext<char> IsWhiteSpace(this in GuardContext<char> guard)
     {
         if (!char.IsWhiteSpace(guard.Value))
         {
@@ -51,7 +51,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<char> IsUpperCase(this in GuardValue<char> guard)
+    public static ref readonly GuardContext<char> IsUpperCase(this in GuardContext<char> guard)
     {
         if (!char.IsUpper(guard.Value))
         {
@@ -61,7 +61,7 @@ public static partial class GuardValueExtensions
         return ref guard;
     }
 
-    public static ref readonly GuardValue<char> IsLowerCase(this in GuardValue<char> guard)
+    public static ref readonly GuardContext<char> IsLowerCase(this in GuardContext<char> guard)
     {
         if (!char.IsLower(guard.Value))
         {

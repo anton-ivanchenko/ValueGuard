@@ -6,7 +6,7 @@ namespace ValueGuard._Internal;
 internal static partial class GenericImplementation
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> GreaterThan<TValue, TPredicate>(in GuardValue<TValue> guard, TValue value)
+    public static ref readonly GuardContext<TValue> GreaterThan<TValue, TPredicate>(in GuardContext<TValue> guard, TValue value)
         where TPredicate : struct, IRangePredicate<TValue>
     {
         if (default(TPredicate).IsLessOrEqual(guard.Value, value))
@@ -18,8 +18,8 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> GreaterThanOrEqualTo<TValue, TPredicate>(
-        in GuardValue<TValue> guard,
+    public static ref readonly GuardContext<TValue> GreaterThanOrEqualTo<TValue, TPredicate>(
+        in GuardContext<TValue> guard,
         TValue value)
         where TPredicate : struct, IRangePredicate<TValue>
     {
@@ -32,7 +32,7 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> LessThan<TValue, TPredicate>(in GuardValue<TValue> guard, TValue value)
+    public static ref readonly GuardContext<TValue> LessThan<TValue, TPredicate>(in GuardContext<TValue> guard, TValue value)
         where TPredicate : struct, IRangePredicate<TValue>
     {
         if (default(TPredicate).IsGreaterOrEqual(guard.Value, value))
@@ -44,8 +44,8 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> LessThanOrEqualTo<TValue, TPredicate>(
-        in GuardValue<TValue> guard,
+    public static ref readonly GuardContext<TValue> LessThanOrEqualTo<TValue, TPredicate>(
+        in GuardContext<TValue> guard,
         TValue value)
         where TPredicate : struct, IRangePredicate<TValue>
     {
@@ -58,8 +58,8 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> InRange<TValue, TPredicate>(
-        in GuardValue<TValue> guard,
+    public static ref readonly GuardContext<TValue> InRange<TValue, TPredicate>(
+        in GuardContext<TValue> guard,
         TValue min,
         TValue max,
         bool excludeMin = false,

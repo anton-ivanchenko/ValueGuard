@@ -6,7 +6,7 @@ namespace ValueGuard._Internal;
 internal static partial class GenericImplementation
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> IsDefault<TValue, TPredicate>(in GuardValue<TValue> guard)
+    public static ref readonly GuardContext<TValue> IsDefault<TValue, TPredicate>(in GuardContext<TValue> guard)
         where TPredicate : struct, IDefaultPredicate<TValue>
     {
         if (!default(TPredicate).IsDefault(guard.Value))
@@ -18,7 +18,7 @@ internal static partial class GenericImplementation
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static ref readonly GuardValue<TValue> NotDefault<TValue, TPredicate>(in GuardValue<TValue> guard)
+    public static ref readonly GuardContext<TValue> NotDefault<TValue, TPredicate>(in GuardContext<TValue> guard)
         where TPredicate : struct, IDefaultPredicate<TValue>
     {
         if (default(TPredicate).IsDefault(guard.Value))

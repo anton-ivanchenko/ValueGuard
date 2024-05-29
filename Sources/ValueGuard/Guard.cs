@@ -29,7 +29,7 @@ public static class Guard
         throw GuardException.Create(parameterName, value, "Value must be null");
     }
 
-    public static GuardValue<T> NotNull<T>(
+    public static GuardContext<T> NotNull<T>(
         [NotNull] T? value,
         [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where T : struct
@@ -44,7 +44,7 @@ public static class Guard
         return new(parameterName, value.Value);
     }
 
-    public static GuardValue<T> NotNull<T>(
+    public static GuardContext<T> NotNull<T>(
         [NotNull] T? value,
         [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where T : class
@@ -59,7 +59,7 @@ public static class Guard
         return new(parameterName, value);
     }
 
-    public static GuardValue<T> Value<T>(T value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
+    public static GuardContext<T> Value<T>(T value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where T : notnull
     {
         parameterName ??= nameof(value);

@@ -2,9 +2,9 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace ValueGuard;
 
-public readonly struct GuardValue<T>
+public readonly struct GuardContext<T>
 {
-    public GuardValue(string parameterName, T value)
+    public GuardContext(string parameterName, T value)
     {
         ParameterName = parameterName;
         Value = value;
